@@ -1,0 +1,107 @@
+import { JobOpening } from '@/types';
+
+export const JOB_OPENINGS: JobOpening[] = [
+  {
+    id: 'job-mgr-sales-lhr',
+    title: 'Manager Sales & Commercial Acquisitions',
+    department: 'Sales Directorate',
+    location: 'Corporate HQ, Bahria Town Lahore',
+    type: 'Full-time',
+    experience: '5–8 Years in Off-Plan High-Rise Real Estate',
+    overview: 'Seeking an exceptional sales closer to lead a dedicated sales squad promoting Grand 15 and Grand X, handling high-net-worth client consultations and closure meetings.',
+    responsibilities: [
+      'Lead and mentor a team of 6 sales executives to exceed quarterly off-plan revenue targets.',
+      'Conduct executive boardroom presentations for institutional investors and family offices.',
+      'Maintain pipeline hygiene and conversion metrics inside Salesforce/HubSpot CRM.',
+      'Participate in high-profile developer roadshows and investor dinner banquets.',
+    ],
+    requirements: [
+      'Bachelors or Masters in Business, Marketing, or Finance.',
+      'Verifiable personal sales volume exceeding PKR 250M in Bahria Town or DHA high-rise projects.',
+      'Bilingual fluency in Urdu and English with persuasive executive presence.',
+      'Deep knowledge of off-plan installment structures and provincial property taxation.',
+    ],
+    kpis: [
+      'Quarterly Gross Sales Realization: PKR 150M+',
+      'Lead-to-Meeting Conversion Rate > 22%',
+      'CRM Pipeline Accuracy & Update Rate: 100%',
+    ],
+    whatsappRouting: 'https://wa.me/923210004000?text=Hi%20Boulevard%2001%20HR,%20I%20am%20applying%20for%20Manager%20Sales%20(Lahore)',
+  },
+  {
+    id: 'job-bdr-overseas',
+    title: 'Business Development Representative (Overseas NRP Desk)',
+    department: 'International Client Advisory',
+    location: 'Lahore (Shift flexibility for UK/USA/Gulf time zones)',
+    type: 'Full-time',
+    experience: '2–4 Years in Expatriate Real Estate Sales',
+    overview: 'Drive outbound and inbound relationship management with overseas Pakistani diaspora looking for secure high-yield property acquisitions through Roshan Digital Accounts.',
+    responsibilities: [
+      'Conduct scheduled video consultations with NRP prospects in UK, US, UAE, and Canada.',
+      'Coordinate digital document execution, NADRA verification, and SBP bank remittance tracking.',
+      'Nurture community liaisons with Pakistani professional associations abroad.',
+      'Deliver tailored parametric project comparisons aligned with client retirement/yield horizons.',
+    ],
+    requirements: [
+      'Native or near-native English proficiency alongside Urdu.',
+      'Experience handling international client calls, WhatsApp Business routing, and CRM automations.',
+      'Familiarity with RDA banking frameworks, repatriation laws, and POC documentation.',
+    ],
+    kpis: [
+      'Monthly Qualified Video Consultations: 40+',
+      'Overseas Booking Conversions: 3+ Units per month',
+      'Average Inquiry Response Time < 15 minutes',
+    ],
+    whatsappRouting: 'https://wa.me/923210004000?text=Hi%20Boulevard%2001%20HR,%20I%20am%20applying%20for%20BDR%20Overseas%20Desk',
+  },
+  {
+    id: 'job-site-eng-isb',
+    title: 'Senior Civil & Structural Site Engineer',
+    department: 'Civil Engineering & Project Controls',
+    location: 'The View — Grand 12, Phase 8 Bahria Town Islamabad',
+    type: 'Full-time',
+    experience: '6–10 Years in G+14 High-Rise Construction',
+    overview: 'Lead on-site construction supervision, contractor quality control, and schedule adherence for our premier mixed-use high-rise in Bahria Islamabad.',
+    responsibilities: [
+      'Supervise daily raft foundation casting, column concrete pours, and post-tensioned slab execution.',
+      'Coordinate with structural engineering consultants (PEB/RCC) and municipal inspection bodies.',
+      'Enforce zero-tolerance safety standards (OHSAS) and structural testing protocols.',
+      'Maintain real-time construction milestone logs for customer transparency updates.',
+    ],
+    requirements: [
+      'B.Sc Civil Engineering (PEC Registered).',
+      'Proven field experience on at least two completed high-rise towers (G+12 or taller).',
+      'Expertise in Primavera P6, AutoCAD, and structural concrete mix design.',
+    ],
+    kpis: [
+      'Zero Lost-Time Work Incidents (LTI)',
+      '100% Milestone Schedule Adherence',
+      'Concrete Quality Cube Compressive Strength Compliance: 100%',
+    ],
+    whatsappRouting: 'https://wa.me/923210004000?text=Hi%20Boulevard%2001%20HR,%20I%20am%20applying%20for%20Senior%20Civil%20Engineer%20(Islamabad)',
+  },
+  {
+    id: 'job-inv-consultant-lhr',
+    title: 'Real Estate Portfolio Consultant',
+    department: 'Corporate Sales Directorate',
+    location: 'Corporate HQ, Bahria Town Lahore',
+    type: 'Full-time',
+    experience: '2–5 Years in Premium Property Consulting',
+    overview: 'Engage walk-in investors at our flagship Plaza 39 corporate lounge, conducting site tours of active developments and guiding clients through live inventory selection.',
+    responsibilities: [
+      'Host prospective buyers for personalized walkthroughs across Grand 15, Grand 14, and Grand 11.',
+      'Provide objective parametric comparison analysis between commercial retail and residential assets.',
+      'Structure custom installment payment schedules in coordination with the finance desk.',
+    ],
+    requirements: [
+      'Excellent verbal interpersonal and negotiation skills.',
+      'In-depth knowledge of Bahria Town Lahore master sectors, commercial nodes, and transit links.',
+      'Professional grooming and dedication to white-glove customer service.',
+    ],
+    kpis: [
+      'Walk-In to Allotment Conversion: 18%',
+      'Customer Satisfaction Score (CSAT) > 95%',
+    ],
+    whatsappRouting: 'https://wa.me/923210004000?text=Hi%20Boulevard%2001%20HR,%20I%20am%20applying%20for%20Portfolio%20Consultant%20(Lahore)',
+  },
+];
