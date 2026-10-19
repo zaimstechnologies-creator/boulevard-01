@@ -19,27 +19,27 @@ import { Logo } from '@/components/atoms/Logo';
 
 export const Footer: React.FC = () => {
   return (
-    <footer className="bg-[#101B2E] text-[#F5F2EB] border-t-2 border-[#C4A46A]/60">
+    <footer className="bg-[#101B2E] text-[#F5F2EB] border-t-2 border-[#D9B878]/60">
       {/* Upper Audited Metrics Strip */}
-      <div className="border-b border-[#C4A46A]/20 bg-[#0A121F]/80 py-8 px-4 sm:px-6 lg:px-8">
+      <div className="border-b border-[#D9B878]/20 bg-[#0A121F]/80 py-8 px-4 sm:px-6 lg:px-8">
         <div className="max-w-7xl mx-auto grid grid-cols-2 lg:grid-cols-4 gap-6 text-center">
           <div className="space-y-1">
-            <div className="text-3xl font-extrabold text-[#C4A46A] font-serif">9+ Years</div>
+            <div className="text-3xl font-extrabold text-[#D9B878] font-serif">9+ Years</div>
             <div className="text-xs uppercase tracking-wider text-gray-300 font-bold">Continuous Operation</div>
             <p className="text-[11px] text-gray-400">Pioneering Bahria Town high-rises</p>
           </div>
           <div className="space-y-1">
-            <div className="text-3xl font-extrabold text-[#C4A46A] font-serif">500+ Units</div>
+            <div className="text-3xl font-extrabold text-[#D9B878] font-serif">500+ Units</div>
             <div className="text-xs uppercase tracking-wider text-gray-300 font-bold">Successfully Delivered</div>
             <p className="text-[11px] text-gray-400">To resident owners & investors</p>
           </div>
           <div className="space-y-1">
-            <div className="text-3xl font-extrabold text-[#C4A46A] font-serif">15 High-Rises</div>
+            <div className="text-3xl font-extrabold text-[#D9B878] font-serif">15 High-Rises</div>
             <div className="text-xs uppercase tracking-wider text-gray-300 font-bold">Completed Developments</div>
             <p className="text-[11px] text-gray-400">Institutional structural grade</p>
           </div>
           <div className="space-y-1">
-            <div className="text-3xl font-extrabold text-[#C4A46A] font-serif">100% On-Time</div>
+            <div className="text-3xl font-extrabold text-[#D9B878] font-serif">100% On-Time</div>
             <div className="text-xs uppercase tracking-wider text-gray-300 font-bold">Scheduled Handover Record</div>
             <p className="text-[11px] text-gray-400">Zero project abandonment history</p>
           </div>
@@ -71,8 +71,8 @@ export const Footer: React.FC = () => {
 
           {/* Active Towers Portfolio */}
           <div>
-            <h3 className="text-xs uppercase tracking-wider text-[#C4A46A] font-bold mb-4 flex items-center gap-2">
-              <Building className="w-4 h-4 text-[#C4A46A]" />
+            <h3 className="text-xs uppercase tracking-wider text-[#D9B878] font-bold mb-4 flex items-center gap-2">
+              <Building className="w-4 h-4 text-[#D9B878]" />
               <span>Active Towers</span>
             </h3>
             <ul className="space-y-2.5 text-xs text-gray-300">
@@ -80,7 +80,7 @@ export const Footer: React.FC = () => {
                 <li key={proj.id}>
                   <Link
                     href={`/projects/${proj.slug}`}
-                    className="hover:text-[#C4A46A] transition-colors block"
+                    className="hover:text-[#D9B878] transition-colors block"
                   >
                     <span className="font-semibold text-white">{proj.title}</span>
                     <span className="block text-[11px] text-gray-400 capitalize">{proj.location_text.split(',')[0]}</span>
@@ -92,43 +92,43 @@ export const Footer: React.FC = () => {
 
           {/* Quick Platform Nodes */}
           <div>
-            <h3 className="text-xs uppercase tracking-wider text-[#C4A46A] font-bold mb-4 flex items-center gap-2">
-              <Globe2 className="w-4 h-4 text-[#C4A46A]" />
+            <h3 className="text-xs uppercase tracking-wider text-[#D9B878] font-bold mb-4 flex items-center gap-2">
+              <Globe2 className="w-4 h-4 text-[#D9B878]" />
               <span>Investor Tools</span>
             </h3>
             <ul className="space-y-2 text-xs text-gray-300">
               <li>
-                <Link href="/inventory" className="hover:text-[#C4A46A] transition-colors">
+                <Link href="/inventory" className="hover:text-[#D9B878] transition-colors">
                   Live Unit Inventory Sheet
                 </Link>
               </li>
               <li>
-                <Link href="/compare" className="hover:text-[#C4A46A] transition-colors">
+                <Link href="/compare" className="hover:text-[#D9B878] transition-colors">
                   Parametric Tower Comparison
                 </Link>
               </li>
               <li>
-                <Link href="/strategic-partners" className="hover:text-[#C4A46A] transition-colors">
+                <Link href="/strategic-partners" className="hover:text-[#D9B878] transition-colors">
                   Etihad Town Broker Portal
                 </Link>
               </li>
               <li>
-                <Link href="/blog" className="hover:text-[#C4A46A] transition-colors">
+                <Link href="/blog" className="hover:text-[#D9B878] transition-colors">
                   NRP Roshan Digital Guide
                 </Link>
               </li>
               <li>
-                <Link href="/team" className="hover:text-[#C4A46A] transition-colors">
+                <Link href="/team" className="hover:text-[#D9B878] transition-colors">
                   Sales Directorate Roster
                 </Link>
               </li>
               <li>
-                <Link href="/career" className="hover:text-[#C4A46A] transition-colors">
+                <Link href="/career" className="hover:text-[#D9B878] transition-colors">
                   Careers & Recruitment
                 </Link>
               </li>
               <li>
-                <Link href="/contact" className="hover:text-[#C4A46A] transition-colors">
+                <Link href="/contact" className="hover:text-[#D9B878] transition-colors">
                   Office Geolocation & Booking
                 </Link>
               </li>
@@ -137,8 +137,8 @@ export const Footer: React.FC = () => {
 
           {/* Corporate Offices & Operating Hours */}
           <div className="space-y-4">
-            <h3 className="text-xs uppercase tracking-wider text-[#C4A46A] font-bold mb-4 flex items-center gap-2">
-              <MapPin className="w-4 h-4 text-[#C4A46A]" />
+            <h3 className="text-xs uppercase tracking-wider text-[#D9B878] font-bold mb-4 flex items-center gap-2">
+              <MapPin className="w-4 h-4 text-[#D9B878]" />
               <span>Headquarters</span>
             </h3>
 
@@ -155,19 +155,19 @@ export const Footer: React.FC = () => {
 
               <div className="pt-2 space-y-1">
                 <div className="flex items-center gap-2">
-                  <Phone className="w-3.5 h-3.5 text-[#C4A46A]" />
-                  <a href={`tel:${COMPANY_INFO.phoneClean}`} className="text-white hover:text-[#C4A46A]">
+                  <Phone className="w-3.5 h-3.5 text-[#D9B878]" />
+                  <a href={`tel:${COMPANY_INFO.phoneClean}`} className="text-white hover:text-[#D9B878]">
                     {COMPANY_INFO.phone}
                   </a>
                 </div>
                 <div className="flex items-center gap-2">
-                  <Mail className="w-3.5 h-3.5 text-[#C4A46A]" />
+                  <Mail className="w-3.5 h-3.5 text-[#D9B878]" />
                   <a href={`mailto:${COMPANY_INFO.email}`} className="text-gray-300 hover:text-white truncate">
                     {COMPANY_INFO.email}
                   </a>
                 </div>
                 <div className="flex items-center gap-2">
-                  <Clock className="w-3.5 h-3.5 text-[#C4A46A]" />
+                  <Clock className="w-3.5 h-3.5 text-[#D9B878]" />
                   <span className="text-gray-400">{COMPANY_INFO.operatingHours}</span>
                 </div>
               </div>
@@ -176,7 +176,7 @@ export const Footer: React.FC = () => {
         </div>
 
         {/* Bottom Legal Notice */}
-        <div className="mt-12 pt-8 border-t border-[#C4A46A]/20 flex flex-col md:flex-row items-center justify-between gap-4 text-xs text-gray-400">
+        <div className="mt-12 pt-8 border-t border-[#D9B878]/20 flex flex-col md:flex-row items-center justify-between gap-4 text-xs text-gray-400">
           <p>
             © 2026 {COMPANY_INFO.legalName} — {COMPANY_INFO.tagline}. All Rights Reserved. State Bank of Pakistan RDA Remittance Compliant.
           </p>

@@ -157,21 +157,21 @@ export default function HomePage() {
           </div>
 
           {/* Historical Performance Verification Badge */}
-          <div className="inline-flex items-center gap-2 px-5 py-2 rounded-full glass-pill text-xs font-bold text-[#C4A46A] shadow-lg shadow-black/40">
-            <Award className="w-4 h-4 text-[#C4A46A]" />
+          <div className="inline-flex items-center gap-2 px-5 py-2 rounded-full glass-pill text-[13px] font-semibold text-[#D9B878] border border-[#D9B878]/35 shadow-[0px_4px_14px_0px_rgba(0,0,0,0.28)]">
+            <Award className="w-4 h-4 text-[#D9B878]" />
             <span>9+ Years Audited Track Record • 15 Towers • 500+ Delivered Units</span>
           </div>
 
-          {/* Master Headline with Metallic Golden Shimmer */}
-          <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-serif font-black tracking-tight text-white leading-tight drop-shadow-[0_4px_20px_rgba(0,0,0,0.9)]">
+          {/* Master Headline with Grand 15 51px Editorial Typography */}
+          <h1 className="text-3xl sm:text-4xl md:text-[51px] md:leading-[56px] font-bold tracking-tight text-white leading-tight drop-shadow-[0_4px_24px_rgba(0,0,0,0.95)]">
             Institutional High-Rise <br />
-            <span className="gold-gradient-text block mt-1 drop-shadow-[0_4px_16px_rgba(0,0,0,0.8)]">
+            <span className="gold-gradient-text block mt-1 drop-shadow-[0_4px_16px_rgba(0,0,0,0.85)]">
               Excellence in Bahria Town
             </span>
           </h1>
 
           {/* Editorial Subtitle */}
-          <p className="text-sm sm:text-base md:text-lg text-white max-w-3xl mx-auto font-medium leading-relaxed drop-shadow-[0_2px_12px_rgba(0,0,0,0.95)]">
+          <p className="text-[15px] sm:text-[17px] leading-[26px] text-[#F6F1E9] max-w-3xl mx-auto font-normal drop-shadow-[0_2px_12px_rgba(0,0,0,0.95)]">
             Eliminating off-plan uncertainty with verified construction milestones. Explore prime residential penthouses, food court bays, and corporate suites across Bahria Town Lahore and Islamabad.
           </p>
 
@@ -180,7 +180,7 @@ export default function HomePage() {
             {/* Primary Gold Button */}
             <Link
               href="/inventory"
-              className="w-full sm:w-auto px-7 py-3.5 bg-[#C4A46A] hover:bg-[#D4B57C] text-[#101B2E] font-extrabold text-sm rounded-xl shadow-lg hover:shadow-[#C4A46A]/25 transition-all flex items-center justify-center gap-2 group cursor-pointer"
+              className="w-full sm:w-auto px-7 py-3.5 bg-[#D9B878] hover:bg-[#E5C98E] text-[#1C1305] font-bold text-[14px] rounded-[14px] shadow-[0px_8px_30px_-10px_rgba(217,184,120,0.55)] transition-all flex items-center justify-center gap-2 group cursor-pointer min-h-[48px]"
             >
               <span>Explore Live Inventory</span>
               <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
@@ -189,16 +189,16 @@ export default function HomePage() {
             {/* Interactive Sales Funnel Anchor Button */}
             <a
               href="#sales-funnel"
-              className="w-full sm:w-auto px-6 py-3.5 glass-panel glass-panel-hover text-white font-bold text-sm rounded-xl border border-[#C4A46A]/50 transition-all flex items-center justify-center gap-2 cursor-pointer"
+              className="w-full sm:w-auto px-6 py-3.5 glass-panel glass-panel-hover text-white font-bold text-[14px] rounded-[14px] border border-[#D9B878]/40 transition-all flex items-center justify-center gap-2 cursor-pointer min-h-[48px]"
             >
-              <Sparkles className="w-4 h-4 text-[#C4A46A]" />
+              <Sparkles className="w-4 h-4 text-[#D9B878]" />
               <span>Sales Funnel & Advisors</span>
             </a>
 
             {/* Secondary Glassmorphic Button */}
             <Link
               href="/compare"
-              className="w-full sm:w-auto px-6 py-3.5 bg-white/5 hover:bg-white/10 text-white font-bold text-sm rounded-xl border border-[#C4A46A]/40 backdrop-blur-xs transition-all text-center"
+              className="w-full sm:w-auto px-6 py-3.5 bg-white/5 hover:bg-white/10 text-white font-bold text-[14px] rounded-[14px] border border-white/15 backdrop-blur-xs transition-all text-center min-h-[48px] flex items-center justify-center"
             >
               Compare 5 Active Towers
             </Link>
@@ -208,7 +208,7 @@ export default function HomePage() {
               href={`https://wa.me/${COMPANY_INFO.phoneClean}?text=Hello%20Boulevard%2001,%20I%20would%20like%20to%20inquire%20about%20active%20tower%20inventory.`}
               target="_blank"
               rel="noopener noreferrer"
-              className="w-full sm:w-auto px-6 py-3.5 bg-[#152238]/90 hover:bg-[#1A2B47] text-white font-bold text-sm rounded-xl border border-[#C4A46A]/40 hover:border-[#25D366] transition-all flex items-center justify-center gap-2"
+              className="w-full sm:w-auto px-6 py-3.5 bg-[#101B2E]/90 hover:bg-[#16253E] text-white font-bold text-[14px] rounded-[14px] border border-[#25D366]/40 hover:border-[#25D366] transition-all flex items-center justify-center gap-2 min-h-[48px] shadow-[0px_8px_20px_-10px_rgba(37,211,102,0.4)]"
             >
               <MessageCircle className="w-4 h-4 text-[#25D366]" />
               <span>Instant WhatsApp</span>
@@ -216,17 +216,17 @@ export default function HomePage() {
           </div>
 
           {/* SBP & Geolocation Trust Seals */}
-          <div className="pt-6 flex flex-wrap items-center justify-center gap-6 text-xs text-gray-400">
+          <div className="pt-6 flex flex-wrap items-center justify-center gap-6 text-[13px] text-[#A39C8F]">
             <div className="flex items-center gap-1.5">
               <ShieldCheck className="w-4 h-4 text-emerald-400" />
               <span>State Bank RDA Remittance Compliant</span>
             </div>
             <div className="flex items-center gap-1.5">
-              <Building2 className="w-4 h-4 text-[#C4A46A]" />
+              <Building2 className="w-4 h-4 text-[#D9B878]" />
               <span>Etihad Town Chapter Strategic Partner</span>
             </div>
             <div className="flex items-center gap-1.5">
-              <MapPin className="w-4 h-4 text-[#C4A46A]" />
+              <MapPin className="w-4 h-4 text-[#D9B878]" />
               <span>Plaza 39 AA Commercial, Bahria Town Lahore</span>
             </div>
           </div>
@@ -250,23 +250,24 @@ export default function HomePage() {
         {/* Section Header */}
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12">
           <div>
-            <div className="text-[11px] uppercase tracking-widest text-[#C4A46A] font-extrabold mb-1">
-              Active Construction & Luxury Portfolio
+            <div className="text-[11px] uppercase tracking-widest text-[#D9B878] font-bold mb-1.5 flex items-center gap-2">
+              <Sparkles className="w-3.5 h-3.5" />
+              <span>Active Construction & Luxury Portfolio</span>
             </div>
-            <h2 className="text-3xl md:text-4xl font-serif font-black text-white">
+            <h2 className="text-2xl sm:text-3xl md:text-[51px] md:leading-[56px] font-bold text-white tracking-tight">
               Curated High-Rise Developments
             </h2>
-            <p className="text-xs sm:text-sm text-gray-400 mt-2 max-w-xl leading-relaxed">
+            <p className="text-[15px] leading-[23px] text-[#A39C8F] mt-2 max-w-xl">
               Every premium high-rise registered under Boulevard 01 provides verified construction schedules, prime commercial footfall, and turnkey asset management.
             </p>
           </div>
 
           <Link
             href="/projects"
-            className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-[#C4A46A] hover:text-[#F5E6CA] transition-colors shrink-0"
+            className="inline-flex items-center gap-2 text-[13px] font-bold uppercase tracking-wider text-[#D9B878] hover:text-[#F6F1E9] transition-colors shrink-0"
           >
             <span>View All Projects</span>
-            <ArrowRight className="w-3.5 h-3.5" />
+            <ArrowRight className="w-4 h-4" />
           </Link>
         </div>
 
@@ -275,7 +276,7 @@ export default function HomePage() {
           {PROJECTS.slice(0, 3).map((project) => (
             <div
               key={project.id}
-              className="glass-panel glass-panel-hover rounded-3xl flex flex-col justify-between overflow-hidden group"
+              className="glass-panel glass-panel-hover rounded-[22px] flex flex-col justify-between overflow-hidden group"
             >
               <div>
                 {/* Image Cover with Badges */}
@@ -288,18 +289,18 @@ export default function HomePage() {
                   <div className="absolute inset-0 bg-gradient-to-t from-[#0A1220] via-transparent to-black/30" />
 
                   {/* Top Left Flagship Badge */}
-                  <div className="absolute top-3 left-3 bg-[#C4A46A] text-[#101B2E] text-[10px] font-extrabold px-3 py-1 rounded-full uppercase tracking-wider shadow-md">
+                  <div className="absolute top-3 left-3 bg-[#D9B878] text-[#1C1305] text-[11px] font-bold px-3 py-1 rounded-[14px] uppercase tracking-wider shadow-md">
                     ★ {project.status_badge?.includes('Flagship') || project.id === 'grand-15' ? 'Flagship Project' : 'Now Selling'}
                   </div>
 
                   {/* Top Right Status Badge */}
-                  <div className="absolute top-3 right-3 bg-[#0A121F]/90 backdrop-blur-xs text-[#C4A46A] border border-[#C4A46A]/40 text-[9px] font-bold px-2.5 py-1 rounded-md uppercase tracking-wider">
+                  <div className="absolute top-3 right-3 bg-[#0A121F]/90 backdrop-blur-xs text-[#D9B878] border border-[#D9B878]/40 text-[10px] font-bold px-2.5 py-1 rounded-[14px] uppercase tracking-wider">
                     {project.status_badge}
                   </div>
 
                   {/* Sub-Headline Over Image */}
                   <div className="absolute bottom-3 left-4 right-4">
-                    <div className="text-[10px] font-semibold text-[#C4A46A] uppercase tracking-wider">
+                    <div className="text-[11px] font-semibold text-[#D9B878] uppercase tracking-wider">
                       {project.concept_theme}
                     </div>
                   </div>
@@ -307,28 +308,28 @@ export default function HomePage() {
 
                 {/* Card Body */}
                 <div className="p-6 space-y-4">
-                  <h3 className="text-lg font-serif font-bold text-white line-clamp-1">
+                  <h3 className="text-[19px] font-bold text-white line-clamp-1">
                     {project.title}
                   </h3>
-                  <p className="text-xs text-gray-400 line-clamp-2 leading-relaxed">
+                  <p className="text-[13px] text-[#A39C8F] line-clamp-2 leading-relaxed">
                     {project.overview_body}
                   </p>
 
                   {/* Structured Spec Box */}
-                  <div className="grid grid-cols-2 gap-3 py-3 px-3.5 bg-[#0B1220]/80 rounded-2xl border border-white/5 text-xs">
+                  <div className="grid grid-cols-2 gap-3 py-3 px-3.5 bg-[#0B1220]/80 rounded-[16px] border border-white/5 text-[13px]">
                     <div>
-                      <span className="text-gray-400 block text-[10px] uppercase font-bold">Scale</span>
+                      <span className="text-[#A39C8F] block text-[11px] uppercase font-bold">Scale</span>
                       <span className="font-bold text-white">{project.floor_count}</span>
                     </div>
                     <div>
-                      <span className="text-gray-400 block text-[10px] uppercase font-bold">Location</span>
+                      <span className="text-[#A39C8F] block text-[11px] uppercase font-bold">Location</span>
                       <span className="font-bold text-white truncate block">
                         {project.city === 'lahore' ? 'Bahria Downtown LHR' : 'Islamabad Phase 8'}
                       </span>
                     </div>
                     <div className="col-span-2 pt-1 border-t border-white/5">
-                      <span className="text-gray-400 block text-[10px] uppercase font-bold">Price Horizon</span>
-                      <span className="font-black text-[#C4A46A] text-sm">
+                      <span className="text-[#A39C8F] block text-[11px] uppercase font-bold">Price Horizon</span>
+                      <span className="font-black text-[#D9B878] text-[17px]">
                         From {formatPKR(project.starting_price_pkr)}
                       </span>
                     </div>
@@ -340,7 +341,7 @@ export default function HomePage() {
               <div className="p-6 pt-0 flex items-center gap-2">
                 <Link
                   href={`/projects/${project.slug}`}
-                  className="flex-1 py-2.5 px-3 bg-[#1A2840]/90 hover:bg-[#C4A46A] text-[#C4A46A] hover:text-[#101B2E] border border-[#C4A46A]/40 text-xs font-bold rounded-xl text-center transition-all flex items-center justify-center gap-1.5"
+                  className="flex-1 py-3 px-3 bg-[#101B2E] hover:bg-[#D9B878] text-[#D9B878] hover:text-[#1C1305] border border-[#D9B878]/40 text-[13px] font-bold rounded-[14px] text-center transition-all flex items-center justify-center gap-1.5 min-h-[44px]"
                 >
                   <span>View Specifications</span>
                   <ArrowRight className="w-3.5 h-3.5" />
@@ -361,22 +362,22 @@ export default function HomePage() {
       {/* =========================================================================
           4. SECTION: LIFESTYLE & LIVING AMENITIES
           ========================================================================= */}
-      <section className="py-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto w-full relative z-10">
+      <section className="py-24 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto w-full relative z-10">
         {/* Subtle Section Divider */}
-        <div className="flex items-center justify-center gap-4 mb-6">
-          <div className="h-[1px] w-16 bg-gradient-to-r from-transparent to-[#C4A46A]/40" />
-          <div className="text-[10px] uppercase tracking-widest text-[#C4A46A] font-extrabold flex items-center gap-1.5">
+        <div className="flex items-center justify-center gap-4 mb-4">
+          <div className="h-[1px] w-16 bg-gradient-to-r from-transparent to-[#D9B878]/50" />
+          <div className="text-[11px] uppercase tracking-widest text-[#D9B878] font-bold flex items-center gap-2">
             <Sparkles className="w-3.5 h-3.5" />
-            <span>Lifestyle & Living Amenities</span>
+            <span>Curated Resident Infrastructure</span>
           </div>
-          <div className="h-[1px] w-16 bg-gradient-to-l from-transparent to-[#C4A46A]/40" />
+          <div className="h-[1px] w-16 bg-gradient-to-l from-transparent to-[#D9B878]/50" />
         </div>
 
-        {/* Title */}
-        <h2 className="text-3xl md:text-4xl font-serif font-black text-center text-white mb-2">
-          Amenities
+        {/* Master Heading with 51px Editorial Scale */}
+        <h2 className="text-2xl sm:text-3xl md:text-[51px] md:leading-[56px] font-bold text-center text-white tracking-tight mb-3">
+          Lifestyle & Living Amenities
         </h2>
-        <p className="text-xs sm:text-sm text-gray-400 text-center max-w-xl mx-auto mb-12">
+        <p className="text-[15px] leading-[23px] text-[#A39C8F] text-center max-w-2xl mx-auto mb-14 font-normal">
           Institutional-grade resident facilities managed by in-house hospitality and property maintenance teams across every active high-rise tower.
         </p>
 
@@ -387,16 +388,16 @@ export default function HomePage() {
             return (
               <div
                 key={amenity.id}
-                className="glass-panel glass-panel-hover rounded-3xl p-6 text-left space-y-4"
+                className="glass-panel glass-panel-hover rounded-[22px] p-7 text-left space-y-4"
               >
-                <div className="w-12 h-12 rounded-2xl bg-white/5 border border-[#C4A46A]/40 flex items-center justify-center text-[#C4A46A]">
+                <div className="w-12 h-12 rounded-[14px] bg-[#D9B878]/10 border border-[#D9B878]/30 flex items-center justify-center text-[#D9B878]">
                   <Icon className="w-5 h-5" />
                 </div>
                 <div>
-                  <h3 className="text-sm font-serif font-bold text-white mb-1.5">
+                  <h3 className="text-[17px] font-bold text-white mb-2 tracking-tight">
                     {amenity.title}
                   </h3>
-                  <p className="text-xs text-gray-400 leading-relaxed">
+                  <p className="text-[13px] text-[#A39C8F] leading-relaxed">
                     {amenity.desc}
                   </p>
                 </div>
@@ -409,32 +410,33 @@ export default function HomePage() {
       {/* =========================================================================
           5. DUAL COLUMN SECTION (ROSHAN DIGITAL + TESTIMONIALS + CONTACT FORM)
           ========================================================================= */}
-      <section id="contact-section" className="py-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto w-full relative z-10">
+      <section id="contact-section" className="py-24 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto w-full relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-start">
           {/* ----------------- LEFT COLUMN: ROSHAN DIGITAL & TESTIMONIALS ----------------- */}
           <div className="lg:col-span-6 space-y-8">
             {/* 1. Roshan Digital Card */}
-            <div className="glass-panel glass-panel-hover rounded-3xl p-8 space-y-4 relative overflow-hidden group">
-              <div className="absolute top-0 right-0 w-32 h-32 bg-[#C4A46A]/10 rounded-full blur-2xl pointer-events-none" />
+            <div className="glass-panel glass-panel-hover rounded-[22px] p-8 space-y-4 relative overflow-hidden group">
+              <div className="absolute top-0 right-0 w-36 h-36 bg-[#D9B878]/15 rounded-full blur-2xl pointer-events-none" />
 
-              <div className="text-[10px] font-bold uppercase tracking-widest text-[#C4A46A]">
-                Seamless Foreign Remittance
+              <div className="text-[11px] font-bold uppercase tracking-widest text-[#D9B878] flex items-center gap-2">
+                <ShieldCheck className="w-4 h-4 text-emerald-400" />
+                <span>Seamless Foreign Remittance</span>
               </div>
-              <h3 className="text-2xl sm:text-3xl font-serif font-black text-[#C4A46A]">
-                Roshan Digital
+              <h3 className="text-2xl sm:text-3xl md:text-[34px] font-bold text-[#D9B878] tracking-tight">
+                Roshan Digital Account (RDA)
               </h3>
-              <p className="text-xs sm:text-sm text-gray-300 leading-relaxed">
+              <p className="text-[15px] leading-[23px] text-[#F6F1E9]">
                 Direct banking integration through State Bank of Pakistan Roshan Digital Account (RDA) framework enables overseas Pakistanis 100% legal capital repatriation, automated digital receipts, and biometric title registration.
               </p>
 
-              <div className="pt-2 flex items-center justify-between">
-                <span className="text-[11px] text-gray-400 flex items-center gap-1.5">
-                  <CheckCircle2 className="w-3.5 h-3.5 text-emerald-400" />
+              <div className="pt-2 flex items-center justify-between border-t border-white/5">
+                <span className="text-[13px] text-[#A39C8F] flex items-center gap-1.5">
+                  <CheckCircle2 className="w-4 h-4 text-emerald-400" />
                   <span>SBP Regulated Framework</span>
                 </span>
                 <Link
                   href="/blog/nrp-real-estate-investment-guide-roshan-digital-account-rda"
-                  className="text-xs font-bold text-[#C4A46A] hover:text-white flex items-center gap-1 transition-colors"
+                  className="text-[13px] font-bold text-[#D9B878] hover:text-[#F6F1E9] flex items-center gap-1.5 transition-colors"
                 >
                   <span>Read Legal Guide</span>
                   <ArrowRight className="w-3.5 h-3.5" />
@@ -443,16 +445,16 @@ export default function HomePage() {
             </div>
 
             {/* 2. Strategic Alliance Strip */}
-            <div className="glass-panel rounded-2xl p-4 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+            <div className="glass-panel rounded-[18px] p-5 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
               <div>
-                <div className="text-[10px] uppercase font-bold text-[#C4A46A] tracking-wider">
+                <div className="text-[11px] uppercase font-bold text-[#D9B878] tracking-wider">
                   Strategic Alliance
                 </div>
-                <div className="text-sm font-serif font-bold text-white">
+                <div className="text-[17px] font-bold text-white tracking-tight mt-0.5">
                   Boulevard 01 × Etihad Town
                 </div>
               </div>
-              <div className="px-3 py-1 bg-[#C4A46A] text-[#101B2E] text-[11px] font-extrabold rounded-full uppercase tracking-wider shrink-0 text-center">
+              <div className="px-4 py-2 bg-[#D9B878] text-[#1C1305] text-[11px] font-bold rounded-[14px] uppercase tracking-wider shrink-0 text-center shadow-[0px_8px_30px_-10px_rgba(217,184,120,0.55)]">
                 Authorized Master Partner
               </div>
             </div>
@@ -460,38 +462,38 @@ export default function HomePage() {
             {/* 3. Testimonials Section */}
             <div className="space-y-4">
               <div>
-                <div className="text-[10px] font-bold uppercase tracking-widest text-[#C4A46A]">
-                  Testimonials
+                <div className="text-[11px] font-bold uppercase tracking-widest text-[#D9B878]">
+                  Verified Client Reviews
                 </div>
-                <h3 className="text-2xl font-serif font-black text-white">
-                  Testimonials
+                <h3 className="text-2xl sm:text-3xl font-bold text-white tracking-tight mt-1">
+                  Investor Testimonials
                 </h3>
-                <p className="text-xs text-gray-400 mt-1">
+                <p className="text-[13px] text-[#A39C8F] mt-1">
                   Verified overseas expatriates and high-net-worth investors across Bahria Town.
                 </p>
               </div>
 
               {/* Review Card */}
-              <div className="glass-panel rounded-3xl p-6 space-y-4 relative">
+              <div className="glass-panel rounded-[22px] p-7 space-y-4 relative">
                 <div className="flex items-center justify-between">
                   {/* 5 Gold Stars */}
-                  <div className="flex items-center gap-1 text-[#C4A46A]">
+                  <div className="flex items-center gap-1 text-[#D9B878]">
                     {Array.from({ length: currentTestimonial.rating }).map((_, i) => (
-                      <Star key={i} className="w-4 h-4 fill-[#C4A46A]" />
+                      <Star key={i} className="w-4 h-4 fill-[#D9B878]" />
                     ))}
                   </div>
 
-                  <Quote className="w-6 h-6 text-[#C4A46A]/40" />
+                  <Quote className="w-6 h-6 text-[#D9B878]/30" />
                 </div>
 
-                <p className="text-xs sm:text-sm text-gray-300 italic leading-relaxed">
+                <p className="text-[15px] text-[#F6F1E9] italic leading-relaxed">
                   &ldquo;{currentTestimonial.quote}&rdquo;
                 </p>
 
-                <div className="pt-2 border-t border-white/5 flex items-center justify-between">
+                <div className="pt-3 border-t border-white/5 flex items-center justify-between">
                   <div>
-                    <div className="text-xs font-bold text-white">{currentTestimonial.name}</div>
-                    <div className="text-[11px] text-[#C4A46A]">{currentTestimonial.role}</div>
+                    <div className="text-[14px] font-bold text-white">{currentTestimonial.name}</div>
+                    <div className="text-[13px] text-[#D9B878] font-medium">{currentTestimonial.role}</div>
                   </div>
 
                   {/* Carousel Dots */}
@@ -502,7 +504,7 @@ export default function HomePage() {
                         onClick={() => setActiveTestimonial(idx)}
                         aria-label={`Go to testimonial ${idx + 1}`}
                         className={`h-2 rounded-full transition-all cursor-pointer ${
-                          activeTestimonial === idx ? 'w-6 bg-[#C4A46A]' : 'w-2 bg-white/20 hover:bg-white/40'
+                          activeTestimonial === idx ? 'w-6 bg-[#D9B878]' : 'w-2 bg-white/20 hover:bg-white/40'
                         }`}
                       />
                     ))}
@@ -514,31 +516,31 @@ export default function HomePage() {
 
           {/* ----------------- RIGHT COLUMN: LUXURY VIP CONTACT FORM ----------------- */}
           <div id="contact-form" className="lg:col-span-6">
-            <div className="glass-panel rounded-3xl p-8 space-y-6 relative overflow-hidden">
-              <div className="absolute top-0 right-0 w-40 h-40 bg-[#C4A46A]/10 rounded-full blur-3xl pointer-events-none" />
+            <div className="glass-panel rounded-[22px] p-8 space-y-6 relative overflow-hidden">
+              <div className="absolute top-0 right-0 w-44 h-44 bg-[#D9B878]/15 rounded-full blur-3xl pointer-events-none" />
 
               <div>
                 <div className="flex items-center justify-between">
-                  <h3 className="text-2xl font-serif font-black text-white">Contact Form</h3>
-                  <div className="flex items-center gap-1.5 text-[11px] text-emerald-400 font-semibold bg-emerald-950/40 px-2.5 py-1 rounded-full border border-emerald-500/30">
-                    <UserCheck className="w-3 h-3" />
+                  <h3 className="text-2xl sm:text-3xl font-bold text-white tracking-tight">VIP Consultation Desk</h3>
+                  <div className="flex items-center gap-1.5 text-[11px] text-emerald-400 font-semibold bg-emerald-950/40 px-3 py-1 rounded-[14px] border border-emerald-500/30">
+                    <UserCheck className="w-3.5 h-3.5" />
                     <span>Direct Desk Routing</span>
                   </div>
                 </div>
-                <p className="text-xs text-gray-400 mt-1">
-                  Book your private VIP consultation or inquire about unit allocation at Plaza 39 AA Commercial.
+                <p className="text-[13px] text-[#A39C8F] mt-1.5">
+                  Book your private consultation or reserve premier high-rise inventory at Plaza 39 AA Commercial.
                 </p>
               </div>
 
               {/* Dynamic Specialist Assignment Notification */}
-              <div className="p-3 rounded-xl bg-[#0A101D]/90 border border-[#C4A46A]/30 flex items-center gap-3">
-                <div className="w-9 h-9 rounded-lg bg-[#C4A46A]/20 flex items-center justify-center text-[#C4A46A] shrink-0 font-bold text-xs">
+              <div className="p-3.5 rounded-[16px] bg-[#0A101D]/90 border border-[#D9B878]/30 flex items-center gap-3">
+                <div className="w-10 h-10 rounded-[14px] bg-[#D9B878]/20 flex items-center justify-center text-[#D9B878] shrink-0 font-bold text-xs">
                   VIP
                 </div>
                 <div className="flex-1 text-xs">
-                  <div className="text-gray-400 text-[10px] uppercase font-bold">Assigned Senior Lead</div>
-                  <div className="text-white font-bold">{assignedAdvisor.name} <span className="text-gray-400 font-normal">({assignedAdvisor.role})</span></div>
-                  <div className="text-[10px] text-[#C4A46A]">{assignedAdvisor.desk}</div>
+                  <div className="text-[#A39C8F] text-[10px] uppercase font-bold">Assigned Senior Lead</div>
+                  <div className="text-white font-bold text-[13px]">{assignedAdvisor.name} <span className="text-[#A39C8F] font-normal text-xs">({assignedAdvisor.role})</span></div>
+                  <div className="text-[11px] text-[#D9B878] font-medium">{assignedAdvisor.desk}</div>
                 </div>
               </div>
 
@@ -547,10 +549,10 @@ export default function HomePage() {
                   <div className="w-16 h-16 bg-emerald-950/60 text-emerald-400 rounded-full flex items-center justify-center mx-auto border border-emerald-800">
                     <CheckCircle2 className="w-8 h-8" />
                   </div>
-                  <h4 className="text-xl font-bold font-serif text-white">Consultation Request Logged</h4>
-                  <p className="text-xs text-gray-300 max-w-sm mx-auto">
+                  <h4 className="text-xl font-bold text-white">Consultation Request Logged</h4>
+                  <p className="text-[14px] text-[#F6F1E9] max-w-sm mx-auto leading-relaxed">
                     Thank you, <strong>{formName}</strong>. Your consultation docket has been assigned directly to{' '}
-                    <strong>{assignedAdvisor.name}</strong> at Plaza 39 AA Commercial, Bahria Town Lahore.
+                    <strong className="text-[#D9B878]">{assignedAdvisor.name}</strong> at Plaza 39 AA Commercial, Bahria Town Lahore.
                   </p>
                   <div className="pt-2">
                     <WhatsAppCTA
@@ -565,7 +567,7 @@ export default function HomePage() {
                 <form onSubmit={handleFormSubmit} className="space-y-4">
                   {/* Full Name */}
                   <div>
-                    <label className="block text-[11px] font-bold text-gray-300 uppercase tracking-wider mb-1">
+                    <label className="block text-[11px] font-bold text-[#A39C8F] uppercase tracking-wider mb-1">
                       Full Legal Name *
                     </label>
                     <input
@@ -574,13 +576,13 @@ export default function HomePage() {
                       placeholder="e.g. Sheikh Zahid"
                       value={formName}
                       onChange={(e) => setFormName(e.target.value)}
-                      className="w-full px-3.5 py-2.5 text-sm bg-[#080D18] border border-white/10 focus:border-[#C4A46A] text-white rounded-xl focus:outline-hidden focus:ring-1 focus:ring-[#C4A46A]"
+                      className="w-full px-4 py-3 text-[14px] min-h-[48px] bg-[#0A121F] border border-white/10 focus:border-[#D9B878] text-white rounded-[14px] focus:outline-hidden focus:ring-1 focus:ring-[#D9B878]"
                     />
                   </div>
 
                   {/* Email Address */}
                   <div>
-                    <label className="block text-[11px] font-bold text-gray-300 uppercase tracking-wider mb-1">
+                    <label className="block text-[11px] font-bold text-[#A39C8F] uppercase tracking-wider mb-1">
                       Email Address *
                     </label>
                     <input
@@ -589,14 +591,14 @@ export default function HomePage() {
                       placeholder="investor@domain.com"
                       value={formEmail}
                       onChange={(e) => setFormEmail(e.target.value)}
-                      className="w-full px-3.5 py-2.5 text-sm bg-[#080D18] border border-white/10 focus:border-[#C4A46A] text-white rounded-xl focus:outline-hidden focus:ring-1 focus:ring-[#C4A46A]"
+                      className="w-full px-4 py-3 text-[14px] min-h-[48px] bg-[#0A121F] border border-white/10 focus:border-[#D9B878] text-white rounded-[14px] focus:outline-hidden focus:ring-1 focus:ring-[#D9B878]"
                     />
                   </div>
 
                   {/* 2 Columns: Phone / WhatsApp & City / Country */}
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                     <div>
-                      <label className="block text-[11px] font-bold text-gray-300 uppercase tracking-wider mb-1">
+                      <label className="block text-[11px] font-bold text-[#A39C8F] uppercase tracking-wider mb-1">
                         WhatsApp / Phone Number *
                       </label>
                       <input
@@ -605,11 +607,11 @@ export default function HomePage() {
                         placeholder="+92 321 000 4000"
                         value={formPhone}
                         onChange={(e) => setFormPhone(e.target.value)}
-                        className="w-full px-3.5 py-2.5 text-sm bg-[#080D18] border border-white/10 focus:border-[#C4A46A] text-white rounded-xl focus:outline-hidden focus:ring-1 focus:ring-[#C4A46A]"
+                        className="w-full px-4 py-3 text-[14px] min-h-[48px] bg-[#0A121F] border border-white/10 focus:border-[#D9B878] text-white rounded-[14px] focus:outline-hidden focus:ring-1 focus:ring-[#D9B878]"
                       />
                     </div>
                     <div>
-                      <label className="block text-[11px] font-bold text-gray-300 uppercase tracking-wider mb-1">
+                      <label className="block text-[11px] font-bold text-[#A39C8F] uppercase tracking-wider mb-1">
                         City / Country
                       </label>
                       <input
@@ -617,7 +619,7 @@ export default function HomePage() {
                         placeholder="e.g. London, UK or Lahore"
                         value={formLocation}
                         onChange={(e) => setFormLocation(e.target.value)}
-                        className="w-full px-3.5 py-2.5 text-sm bg-[#080D18] border border-white/10 focus:border-[#C4A46A] text-white rounded-xl focus:outline-hidden focus:ring-1 focus:ring-[#C4A46A]"
+                        className="w-full px-4 py-3 text-[14px] min-h-[48px] bg-[#0A121F] border border-white/10 focus:border-[#D9B878] text-white rounded-[14px] focus:outline-hidden focus:ring-1 focus:ring-[#D9B878]"
                       />
                     </div>
                   </div>
@@ -625,13 +627,13 @@ export default function HomePage() {
                   {/* 2 Columns: Target Development & Typology Preferred */}
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                     <div>
-                      <label className="block text-[11px] font-bold text-gray-300 uppercase tracking-wider mb-1">
+                      <label className="block text-[11px] font-bold text-[#A39C8F] uppercase tracking-wider mb-1">
                         Target Development
                       </label>
                       <select
                         value={formProject}
                         onChange={(e) => setFormProject(e.target.value)}
-                        className="w-full px-3.5 py-2.5 text-sm bg-[#080D18] border border-white/10 focus:border-[#C4A46A] text-white rounded-xl focus:outline-hidden focus:ring-1 focus:ring-[#C4A46A]"
+                        className="w-full px-4 py-3 text-[14px] min-h-[48px] bg-[#0A121F] border border-white/10 focus:border-[#D9B878] text-white rounded-[14px] focus:outline-hidden focus:ring-1 focus:ring-[#D9B878]"
                       >
                         <option value="grand-15">The Grand Lifestyle — Grand 15</option>
                         <option value="grand-14">The Oasis Grand 14</option>
@@ -642,13 +644,13 @@ export default function HomePage() {
                     </div>
 
                     <div>
-                      <label className="block text-[11px] font-bold text-gray-300 uppercase tracking-wider mb-1">
+                      <label className="block text-[11px] font-bold text-[#A39C8F] uppercase tracking-wider mb-1">
                         Typology Preferred
                       </label>
                       <select
                         value={formTypology}
                         onChange={(e) => setFormTypology(e.target.value)}
-                        className="w-full px-3.5 py-2.5 text-sm bg-[#080D18] border border-white/10 focus:border-[#C4A46A] text-white rounded-xl focus:outline-hidden focus:ring-1 focus:ring-[#C4A46A]"
+                        className="w-full px-4 py-3 text-[14px] min-h-[48px] bg-[#0A121F] border border-white/10 focus:border-[#D9B878] text-white rounded-[14px] focus:outline-hidden focus:ring-1 focus:ring-[#D9B878]"
                       >
                         <option value="residential">Luxury Residential Penthouse</option>
                         <option value="commercial">Commercial Retail Frontage</option>
@@ -660,7 +662,7 @@ export default function HomePage() {
 
                   {/* Discussion / Investment Horizon */}
                   <div>
-                    <label className="block text-[11px] font-bold text-gray-300 uppercase tracking-wider mb-1">
+                    <label className="block text-[11px] font-bold text-[#A39C8F] uppercase tracking-wider mb-1">
                       Investment Position / Discussion
                     </label>
                     <textarea
@@ -668,7 +670,7 @@ export default function HomePage() {
                       placeholder="Mention preferred floor level, budget in PKR, or RDA remittance requirements..."
                       value={formNotes}
                       onChange={(e) => setFormNotes(e.target.value)}
-                      className="w-full px-3.5 py-2.5 text-sm bg-[#080D18] border border-white/10 focus:border-[#C4A46A] text-white rounded-xl focus:outline-hidden focus:ring-1 focus:ring-[#C4A46A]"
+                      className="w-full px-4 py-3 text-[14px] bg-[#0A121F] border border-white/10 focus:border-[#D9B878] text-white rounded-[14px] focus:outline-hidden focus:ring-1 focus:ring-[#D9B878]"
                     />
                   </div>
 
@@ -677,13 +679,13 @@ export default function HomePage() {
                     <button
                       type="submit"
                       disabled={isSubmitting}
-                      className="w-full py-3.5 px-4 bg-[#C4A46A] hover:bg-[#D4B57C] text-[#101B2E] font-black text-sm rounded-xl shadow-lg hover:shadow-[#C4A46A]/25 transition-all flex items-center justify-center gap-2 cursor-pointer disabled:opacity-50"
+                      className="w-full min-h-[48px] py-3.5 px-5 bg-[#D9B878] hover:bg-[#E5C98E] text-[#1C1305] font-bold text-[14px] rounded-[14px] shadow-[0px_8px_30px_-10px_rgba(217,184,120,0.55)] transition-all flex items-center justify-center gap-2 cursor-pointer disabled:opacity-50"
                     >
                       {isSubmitting ? (
                         'Routing Lead to Sales Directorate...'
                       ) : (
                         <>
-                          <Send className="w-4 h-4 text-[#101B2E]" />
+                          <Send className="w-4 h-4 text-[#1C1305]" />
                           <span>Dispatch to {assignedAdvisor.name}</span>
                         </>
                       )}
@@ -691,7 +693,7 @@ export default function HomePage() {
                   </div>
 
                   {/* Trust Disclaimer */}
-                  <div className="text-center text-[10px] text-gray-400 pt-1 flex items-center justify-center gap-1.5">
+                  <div className="text-center text-[11px] text-[#A39C8F] pt-1 flex items-center justify-center gap-1.5">
                     <ShieldCheck className="w-3.5 h-3.5 text-emerald-400" />
                     <span>Direct sales directorate assignment • Plaza 39 AA Commercial</span>
                   </div>

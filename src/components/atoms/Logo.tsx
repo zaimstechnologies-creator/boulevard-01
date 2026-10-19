@@ -48,16 +48,16 @@ export const Logo: React.FC<LogoProps> = ({
     : 'text-[#101B2E]';
 
   const pinClasses = isLight
-    ? 'bg-[#C4A46A] text-[#101B2E]'
+    ? 'bg-[#D9B878] text-[#1C1305]'
     : isAuto
-    ? 'bg-[#101B2E] text-white dark:bg-[#C4A46A] dark:text-[#101B2E]'
+    ? 'bg-[#101B2E] text-white dark:bg-[#D9B878] dark:text-[#1C1305]'
     : 'bg-[#101B2E] text-white';
 
   const taglineClasses = isLight
-    ? 'text-[#C4A46A]'
+    ? 'text-[#D9B878]'
     : isAuto
-    ? 'text-[#101B2E]/80 dark:text-[#C4A46A]'
-    : 'text-[#101B2E]/80';
+    ? 'text-[#1C1305]/80 dark:text-[#D9B878]'
+    : 'text-[#1C1305]/80';
 
   return (
     <div className={`inline-flex flex-col ${className}`}>

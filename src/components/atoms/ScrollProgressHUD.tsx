@@ -63,7 +63,7 @@ export const ScrollProgressHUD: React.FC = () => {
       aria-label="Section navigation and scroll progress"
     >
       {/* Current Section Number Badge */}
-      <div className="mb-3 px-2 py-1 rounded-md glass-panel border border-[#C4A46A]/40 text-[10px] font-mono font-bold text-[#C4A46A] tracking-widest shadow-md">
+      <div className="mb-3 px-2.5 py-1 rounded-[14px] glass-panel border border-[#D9B878]/40 text-[10px] font-mono font-bold text-[#D9B878] tracking-widest shadow-md">
         {currentSection.num}
       </div>
 
@@ -74,7 +74,7 @@ export const ScrollProgressHUD: React.FC = () => {
 
         {/* Dynamic Progress Fill */}
         <div
-          className="absolute top-0 w-[2px] bg-gradient-to-b from-[#C4A46A] to-[#F5E6CA] rounded-full shadow-[0_0_8px_#C4A46A]"
+          className="absolute top-0 w-[2px] bg-gradient-to-b from-[#D9B878] to-[#F6F1E9] rounded-full shadow-[0_0_8px_#D9B878]"
           style={{ height: `${scrollPercent}%` }}
         />
 
@@ -92,13 +92,13 @@ export const ScrollProgressHUD: React.FC = () => {
               <span
                 className={`block rounded-full transition-all duration-300 ${
                   isActive
-                    ? 'w-2.5 h-2.5 bg-[#C4A46A] ring-4 ring-[#C4A46A]/25 shadow-[0_0_8px_#C4A46A]'
-                    : 'w-1.5 h-1.5 bg-white/30 group-hover:bg-[#C4A46A] group-hover:scale-125'
+                    ? 'w-2.5 h-2.5 bg-[#D9B878] ring-4 ring-[#D9B878]/25 shadow-[0_0_8px_#D9B878]'
+                    : 'w-1.5 h-1.5 bg-white/30 group-hover:bg-[#D9B878] group-hover:scale-125'
                 }`}
               />
 
               {/* Tooltip on hover */}
-              <span className="absolute right-7 px-2.5 py-1 rounded-md bg-[#0A121F]/95 border border-[#C4A46A]/30 text-[10px] font-bold text-[#F5E6CA] whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none shadow-lg">
+              <span className="absolute right-7 px-3 py-1.5 rounded-[14px] bg-[#0A121F]/95 border border-[#D9B878]/30 text-[10px] font-bold text-[#F6F1E9] whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none shadow-lg">
                 {sec.num} • {sec.label}
               </span>
             </button>
@@ -112,7 +112,7 @@ export const ScrollProgressHUD: React.FC = () => {
           const nextIdx = (activeSectionIndex + 1) % SECTIONS.length;
           scrollToSection(SECTIONS[nextIdx].id);
         }}
-        className="mt-4 p-1.5 rounded-full text-gray-400 hover:text-[#C4A46A] hover:bg-white/5 transition-colors cursor-pointer"
+        className="mt-4 p-1.5 rounded-full text-[#A39C8F] hover:text-[#D9B878] hover:bg-white/5 transition-colors cursor-pointer"
         aria-label="Scroll to next section"
         title="Scroll down"
       >

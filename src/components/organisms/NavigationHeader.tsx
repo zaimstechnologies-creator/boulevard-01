@@ -135,28 +135,28 @@ export const NavigationHeader: React.FC = () => {
           </Link>
 
           {/* Desktop Navigation Links */}
-          <nav className="hidden lg:flex items-center gap-6 xl:gap-8 text-xs font-semibold uppercase tracking-wider text-gray-200" aria-label="Main Navigation">
+          <nav className="hidden lg:flex items-center gap-6 xl:gap-8 text-[13px] font-semibold uppercase tracking-wider text-gray-200" aria-label="Main Navigation">
             {/* 1. All Projects */}
             <Link
               href="/projects"
-              className={`relative py-2 flex items-center gap-1.5 transition-colors hover:text-[#C4A46A] ${
-                pathname.startsWith('/projects') ? 'text-[#C4A46A]' : 'text-gray-200'
+              className={`relative py-2 flex items-center gap-1.5 transition-colors hover:text-[#D9B878] ${
+                pathname.startsWith('/projects') ? 'text-[#D9B878]' : 'text-gray-200'
               }`}
             >
               <span>Projects</span>
-              <span className="text-[10px] font-bold px-1.5 py-0.2 rounded-md bg-[#152238] text-[#C4A46A] border border-[#C4A46A]/30">
+              <span className="text-[10px] font-bold px-1.5 py-0.5 rounded-md bg-[#152238] text-[#D9B878] border border-[#D9B878]/30">
                 05
               </span>
               {pathname.startsWith('/projects') && (
-                <span className="absolute bottom-0 left-0 right-0 h-0.5 bg-[#C4A46A] rounded-full shadow-[0_0_8px_#C4A46A]" />
+                <span className="absolute bottom-0 left-0 right-0 h-0.5 bg-[#D9B878] rounded-full shadow-[0_0_10px_#D9B878]" />
               )}
             </Link>
 
             {/* 2. Live Inventory */}
             <Link
               href="/inventory"
-              className={`relative py-2 flex items-center gap-2 transition-colors hover:text-[#C4A46A] ${
-                pathname === '/inventory' ? 'text-[#C4A46A]' : 'text-gray-200'
+              className={`relative py-2 flex items-center gap-2 transition-colors hover:text-[#D9B878] ${
+                pathname === '/inventory' ? 'text-[#D9B878]' : 'text-gray-200'
               }`}
             >
               <span className="relative flex h-2 w-2">
@@ -165,62 +165,62 @@ export const NavigationHeader: React.FC = () => {
               </span>
               <span>Live Inventory</span>
               {pathname === '/inventory' && (
-                <span className="absolute bottom-0 left-0 right-0 h-0.5 bg-[#C4A46A] rounded-full shadow-[0_0_8px_#C4A46A]" />
+                <span className="absolute bottom-0 left-0 right-0 h-0.5 bg-[#D9B878] rounded-full shadow-[0_0_10px_#D9B878]" />
               )}
             </Link>
 
             {/* 3. Sales Funnel & Advisor Matching */}
             <Link
               href="/#sales-funnel"
-              className="relative py-2 flex items-center gap-1.5 transition-colors hover:text-[#C4A46A] text-gray-200"
+              className="relative py-2 flex items-center gap-1.5 transition-colors hover:text-[#D9B878] text-gray-200"
             >
               <span>Sales Funnel</span>
-              <span className="text-[9px] font-extrabold px-1.5 py-0.2 rounded-md bg-[#C4A46A]/20 text-[#C4A46A] border border-[#C4A46A]/40 uppercase tracking-wider">
+              <span className="text-[9px] font-extrabold px-1.5 py-0.5 rounded-md bg-[#D9B878]/20 text-[#D9B878] border border-[#D9B878]/40 uppercase tracking-wider">
                 Advisors
               </span>
             </Link>
 
-            {/* 3. Parametric Compare */}
+            {/* 4. Parametric Compare */}
             <Link
               href="/compare"
-              className={`relative py-2 transition-colors hover:text-[#C4A46A] ${
-                pathname === '/compare' ? 'text-[#C4A46A]' : 'text-gray-200'
+              className={`relative py-2 transition-colors hover:text-[#D9B878] ${
+                pathname === '/compare' ? 'text-[#D9B878]' : 'text-gray-200'
               }`}
             >
               <span>Compare</span>
               {pathname === '/compare' && (
-                <span className="absolute bottom-0 left-0 right-0 h-0.5 bg-[#C4A46A] rounded-full shadow-[0_0_8px_#C4A46A]" />
+                <span className="absolute bottom-0 left-0 right-0 h-0.5 bg-[#D9B878] rounded-full shadow-[0_0_10px_#D9B878]" />
               )}
             </Link>
 
-            {/* 4. Strategic Partners */}
+            {/* 5. Strategic Partners */}
             <Link
               href="/strategic-partners"
-              className={`relative py-2 flex items-center gap-1.5 transition-colors hover:text-[#C4A46A] ${
+              className={`relative py-2 flex items-center gap-1.5 transition-colors hover:text-[#D9B878] ${
                 pathname.startsWith('/strategic-partners') || pathname.startsWith('/partners')
-                  ? 'text-[#C4A46A]'
+                  ? 'text-[#D9B878]'
                   : 'text-gray-200'
               }`}
             >
               <span>Partners</span>
-              <span className="hidden xl:inline text-[9px] font-bold px-1.5 py-0.2 rounded-md bg-[#152238] text-gray-300 border border-white/10">
+              <span className="hidden xl:inline text-[9px] font-bold px-1.5 py-0.5 rounded-md bg-[#152238] text-gray-300 border border-white/10">
                 Etihad
               </span>
               {(pathname.startsWith('/strategic-partners') || pathname.startsWith('/partners')) && (
-                <span className="absolute bottom-0 left-0 right-0 h-0.5 bg-[#C4A46A] rounded-full shadow-[0_0_8px_#C4A46A]" />
+                <span className="absolute bottom-0 left-0 right-0 h-0.5 bg-[#D9B878] rounded-full shadow-[0_0_10px_#D9B878]" />
               )}
             </Link>
 
-            {/* 5. Knowledge Hub */}
+            {/* 6. Knowledge Hub */}
             <Link
               href="/blog"
-              className={`relative py-2 transition-colors hover:text-[#C4A46A] ${
-                pathname.startsWith('/blog') ? 'text-[#C4A46A]' : 'text-gray-200'
+              className={`relative py-2 transition-colors hover:text-[#D9B878] ${
+                pathname.startsWith('/blog') ? 'text-[#D9B878]' : 'text-gray-200'
               }`}
             >
               <span>Insights & RDA</span>
               {pathname.startsWith('/blog') && (
-                <span className="absolute bottom-0 left-0 right-0 h-0.5 bg-[#C4A46A] rounded-full shadow-[0_0_8px_#C4A46A]" />
+                <span className="absolute bottom-0 left-0 right-0 h-0.5 bg-[#D9B878] rounded-full shadow-[0_0_10px_#D9B878]" />
               )}
             </Link>
 
@@ -296,17 +296,17 @@ export const NavigationHeader: React.FC = () => {
             {/* Direct Telephone Dial Button */}
             <a
               href={`tel:${COMPANY_INFO.phoneClean}`}
-              className="px-3.5 py-2 text-xs font-semibold text-gray-300 hover:text-white hover:bg-white/5 border border-white/10 rounded-full transition-all flex items-center gap-1.5"
+              className="px-4 py-2 text-xs font-semibold text-gray-300 hover:text-white hover:bg-white/5 border border-white/10 rounded-[14px] transition-all flex items-center gap-1.5 min-h-[44px]"
               title="Call Sales Directorate"
             >
-              <Phone className="w-3.5 h-3.5 text-[#C4A46A]" />
+              <Phone className="w-3.5 h-3.5 text-[#D9B878]" />
               <span className="hidden xl:inline">{COMPANY_INFO.phone}</span>
             </a>
 
             {/* Standout Luxury Get Consultation CTA Button */}
             <Link
               href="/#contact-form"
-              className="px-4 py-2 text-xs font-extrabold uppercase tracking-wider bg-[#C4A46A] hover:bg-[#D4B57C] text-[#101B2E] rounded-xl shadow-md hover:shadow-[#C4A46A]/20 transition-all flex items-center gap-1.5 cursor-pointer"
+              className="px-5 py-2.5 text-[13px] font-bold uppercase tracking-wider bg-[#D9B878] hover:bg-[#E5C98E] text-[#1C1305] rounded-[14px] shadow-[0px_8px_30px_-10px_rgba(217,184,120,0.55)] transition-all flex items-center gap-1.5 cursor-pointer min-h-[44px]"
             >
               <span>Get Consultation</span>
             </Link>
@@ -317,23 +317,23 @@ export const NavigationHeader: React.FC = () => {
             <ThemeToggle />
             <Link
               href="/#contact-form"
-              className="px-3 py-1.5 text-xs font-bold uppercase tracking-wider bg-[#C4A46A] text-[#101B2E] rounded-lg shadow-sm"
+              className="px-3.5 py-2 text-xs font-bold uppercase tracking-wider bg-[#D9B878] text-[#1C1305] rounded-[14px] shadow-sm min-h-[44px] flex items-center"
             >
               Consult
             </Link>
             <button
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="p-2 text-gray-200 hover:text-white rounded-xl hover:bg-white/10 border border-white/10 transition-colors"
+              className="p-2.5 text-gray-200 hover:text-white rounded-[14px] hover:bg-white/10 border border-white/10 transition-colors min-h-[44px] min-w-[44px] flex items-center justify-center"
               aria-label="Toggle navigation menu"
             >
-              {mobileMenuOpen ? <X className="w-5 h-5 text-[#C4A46A]" /> : <Menu className="w-5 h-5" />}
+              {mobileMenuOpen ? <X className="w-5 h-5 text-[#D9B878]" /> : <Menu className="w-5 h-5" />}
             </button>
           </div>
         </div>
       </div>
 
       {/* Decorative Gold Accent Hairline */}
-      <div className="h-[1px] w-full bg-gradient-to-r from-transparent via-[#C4A46A]/40 to-transparent" />
+      <div className="h-[1px] w-full bg-gradient-to-r from-transparent via-[#D9B878]/40 to-transparent" />
 
       {/* Mobile Luxury Navigation Drawer */}
       {mobileMenuOpen && (

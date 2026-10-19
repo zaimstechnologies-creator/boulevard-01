@@ -110,7 +110,7 @@ export default function RootLayout({
           dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationSchema) }}
         />
       </head>
-      <body className="min-h-full flex flex-col bg-[#0A101D] text-[#101B2E] dark:text-[#F5F2EB] selection:bg-[#C4A46A] selection:text-[#101B2E] transition-colors duration-300 relative">
+      <body className="min-h-full flex flex-col bg-[#0A101D] text-[#101B2E] dark:text-[#F5F2EB] selection:bg-[#D9B878] selection:text-[#1C1305] transition-colors duration-300 relative">
         <SmoothScrollProvider>
           {/* Global Scroll-Driven 3D Building Sequence Background with Dark Vignette Overlay */}
           <ScrollImageSequenceBackground />

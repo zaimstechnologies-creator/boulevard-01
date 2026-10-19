@@ -260,7 +260,7 @@ export const ScrollImageSequenceBackground: React.FC<ScrollImageSequenceBackgrou
       {/* Initial load indicator pip (subtle gold line at bottom while keyframes hydrate) */}
       {loadProgress < 100 && (
         <div
-          className="absolute bottom-0 left-0 h-[2px] bg-gradient-to-r from-transparent via-[#C4A46A]/40 to-transparent transition-all duration-300 opacity-60"
+          className="absolute bottom-0 left-0 h-[2px] bg-gradient-to-r from-transparent via-[#D9B878]/60 to-transparent transition-all duration-300 opacity-70"
           style={{ width: `${loadProgress}%` }}
         />
       )}

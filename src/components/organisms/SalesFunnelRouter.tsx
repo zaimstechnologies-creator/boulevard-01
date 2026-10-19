@@ -272,17 +272,17 @@ export const SalesFunnelRouter: React.FC = () => {
     <section id="sales-funnel" className="py-24 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto w-full relative z-10">
       {/* Section Header */}
       <div className="text-center max-w-3xl mx-auto mb-14 space-y-3">
-        <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full glass-pill text-xs font-bold text-[#C4A46A] tracking-wider uppercase">
-          <Award className="w-3.5 h-3.5" />
+        <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full glass-pill text-[11px] font-bold text-[#D9B878] tracking-wider uppercase border border-[#D9B878]/30">
+          <Award className="w-3.5 h-3.5 text-[#D9B878]" />
           <span>Interactive Investor Sales Funnel • Dedicated Executive Assignment</span>
         </div>
 
-        <h2 className="text-3xl sm:text-4xl lg:text-5xl font-serif font-black text-white tracking-tight">
+        <h2 className="text-2xl sm:text-3xl md:text-[51px] md:leading-[56px] font-bold text-white tracking-tight">
           Select Your Asset Class. <br />
           <span className="gold-gradient-text">Meet Your Assigned Portfolio Director.</span>
         </h2>
 
-        <p className="text-sm sm:text-base text-gray-300 leading-relaxed">
+        <p className="text-[15px] sm:text-[17px] leading-[26px] text-[#A39C8F] max-w-2xl mx-auto font-normal">
           Every investment at Boulevard 01 is managed by a designated senior director with institutional domain expertise, guaranteed response times, and personalized asset modeling.
         </p>
       </div>
@@ -299,35 +299,35 @@ export const SalesFunnelRouter: React.FC = () => {
                 setActiveSectorId(funnel.id);
                 setSubmitted(false);
               }}
-              className={`p-4 rounded-2xl text-left transition-all duration-300 flex flex-col justify-between relative overflow-hidden group cursor-pointer ${
+              className={`p-4 rounded-[16px] text-left transition-all duration-300 flex flex-col justify-between relative overflow-hidden group cursor-pointer ${
                 isActive
-                  ? 'bg-[#152238]/95 border-2 border-[#C4A46A] shadow-xl shadow-[#C4A46A]/20 scale-[1.02]'
-                  : 'glass-panel hover:border-[#C4A46A]/50 hover:bg-[#152238]/60'
+                  ? 'bg-[#152238]/95 border-2 border-[#D9B878] shadow-xl shadow-[#D9B878]/20 scale-[1.02]'
+                  : 'glass-panel hover:border-[#D9B878]/50 hover:bg-[#152238]/60'
               }`}
             >
               {isActive && (
-                <div className="absolute top-0 right-0 w-16 h-16 bg-[#C4A46A]/10 rounded-full blur-xl pointer-events-none" />
+                <div className="absolute top-0 right-0 w-16 h-16 bg-[#D9B878]/10 rounded-full blur-xl pointer-events-none" />
               )}
               <div className="flex items-center justify-between mb-3">
                 <div
-                  className={`w-10 h-10 rounded-xl flex items-center justify-center transition-colors ${
-                    isActive ? 'bg-[#C4A46A] text-[#101B2E]' : 'bg-white/10 text-[#C4A46A] group-hover:bg-[#C4A46A]/20'
+                  className={`w-10 h-10 rounded-[14px] flex items-center justify-center transition-colors ${
+                    isActive ? 'bg-[#D9B878] text-[#1C1305]' : 'bg-white/10 text-[#D9B878] group-hover:bg-[#D9B878]/20'
                   }`}
                 >
                   <Icon className="w-5 h-5" />
                 </div>
                 {isActive && (
-                  <span className="text-[10px] font-extrabold uppercase tracking-wider text-[#C4A46A] bg-[#C4A46A]/20 px-2 py-0.5 rounded-full">
+                  <span className="text-[10px] font-extrabold uppercase tracking-wider text-[#D9B878] bg-[#D9B878]/20 px-2.5 py-0.5 rounded-[14px]">
                     Active
                   </span>
                 )}
               </div>
 
               <div>
-                <div className="text-sm font-bold text-white group-hover:text-[#F5E6CA] transition-colors">
+                <div className="text-[14px] font-bold text-white group-hover:text-[#F6F1E9] transition-colors">
                   {funnel.label}
                 </div>
-                <div className="text-[11px] text-gray-400 mt-0.5 line-clamp-1">{funnel.sublabel}</div>
+                <div className="text-[11px] text-[#A39C8F] mt-0.5 line-clamp-1">{funnel.sublabel}</div>
               </div>
             </button>
           );
@@ -335,15 +335,15 @@ export const SalesFunnelRouter: React.FC = () => {
       </div>
 
       {/* Step 2: The Funnel Core Display (Glassmorphic Master Card) */}
-      <div className="glass-panel rounded-3xl p-6 sm:p-8 lg:p-10 border border-[#C4A46A]/30 shadow-2xl relative overflow-hidden animate-in fade-in duration-500">
+      <div className="glass-panel rounded-[22px] p-6 sm:p-8 lg:p-10 border border-[#D9B878]/30 shadow-2xl relative overflow-hidden animate-in fade-in duration-500">
         {/* Ambient Top Glow */}
-        <div className="absolute -top-24 right-1/4 w-96 h-96 bg-[#C4A46A]/10 rounded-full blur-3xl pointer-events-none" />
+        <div className="absolute -top-24 right-1/4 w-96 h-96 bg-[#D9B878]/10 rounded-full blur-3xl pointer-events-none" />
 
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 items-center">
           {/* Left Column: Assigned Senior Director Profile (5 cols) */}
-          <div className="lg:col-span-5 bg-[#0A101D]/80 rounded-2xl p-6 sm:p-7 border border-[#C4A46A]/25 relative space-y-6">
+          <div className="lg:col-span-5 bg-[#0A101D]/80 rounded-[18px] p-6 sm:p-7 border border-[#D9B878]/25 relative space-y-6">
             <div className="flex items-center justify-between">
-              <span className="text-[10px] font-extrabold uppercase tracking-widest text-[#C4A46A] bg-[#C4A46A]/15 px-3 py-1 rounded-full border border-[#C4A46A]/30">
+              <span className="text-[11px] font-bold uppercase tracking-widest text-[#D9B878] bg-[#D9B878]/15 px-3 py-1 rounded-[14px] border border-[#D9B878]/30">
                 {activeFunnel.badge}
               </span>
               <div className="flex items-center gap-1.5 text-xs text-emerald-400 font-semibold">
@@ -358,7 +358,7 @@ export const SalesFunnelRouter: React.FC = () => {
                 <img
                   src={activeFunnel.advisor.image}
                   alt={activeFunnel.advisor.name}
-                  className="w-20 h-20 rounded-2xl object-cover border-2 border-[#C4A46A] shadow-md shadow-black/60"
+                  className="w-20 h-20 rounded-[18px] object-cover border-2 border-[#D9B878] shadow-md shadow-black/60"
                 />
                 <div className="absolute -bottom-1 -right-1 bg-emerald-500 rounded-full p-1 text-[#101B2E]" title="Verified Specialist">
                   <UserCheck className="w-3.5 h-3.5 text-white" />
@@ -366,27 +366,27 @@ export const SalesFunnelRouter: React.FC = () => {
               </div>
 
               <div>
-                <div className="text-xs uppercase font-extrabold tracking-wider text-[#C4A46A]">
+                <div className="text-[11px] uppercase font-bold tracking-wider text-[#D9B878]">
                   Dedicated Portfolio Lead
                 </div>
-                <h3 className="text-xl font-serif font-black text-white">{activeFunnel.advisor.name}</h3>
-                <div className="text-xs text-gray-300 font-medium">{activeFunnel.advisor.role}</div>
-                <div className="text-[11px] text-gray-400 mt-0.5">{activeFunnel.advisor.department}</div>
+                <h3 className="text-[22px] font-bold text-white tracking-tight">{activeFunnel.advisor.name}</h3>
+                <div className="text-[13px] text-[#F6F1E9] font-medium">{activeFunnel.advisor.role}</div>
+                <div className="text-[11px] text-[#A39C8F] mt-0.5">{activeFunnel.advisor.department}</div>
               </div>
             </div>
 
             {/* Specialist Verification Details */}
-            <div className="space-y-2 pt-2 border-t border-white/10 text-xs">
-              <div className="flex items-start gap-2 text-gray-300">
-                <Award className="w-4 h-4 text-[#C4A46A] shrink-0 mt-0.5" />
+            <div className="space-y-2 pt-2 border-t border-white/10 text-[13px]">
+              <div className="flex items-start gap-2 text-[#F6F1E9]">
+                <Award className="w-4 h-4 text-[#D9B878] shrink-0 mt-0.5" />
                 <span>{activeFunnel.advisor.credentials}</span>
               </div>
-              <div className="flex items-start gap-2 text-gray-300">
+              <div className="flex items-start gap-2 text-[#F6F1E9]">
                 <Clock className="w-4 h-4 text-emerald-400 shrink-0 mt-0.5" />
                 <span className="font-semibold text-emerald-300">{activeFunnel.advisor.sla}</span>
               </div>
-              <div className="flex items-start gap-2 text-gray-400">
-                <MapPin className="w-4 h-4 text-[#C4A46A] shrink-0 mt-0.5" />
+              <div className="flex items-start gap-2 text-[#A39C8F]">
+                <MapPin className="w-4 h-4 text-[#D9B878] shrink-0 mt-0.5" />
                 <span className="line-clamp-1">{activeFunnel.advisor.location}</span>
               </div>
             </div>
@@ -399,7 +399,7 @@ export const SalesFunnelRouter: React.FC = () => {
                 )}`}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex-1 px-4 py-3 bg-[#25D366] hover:bg-[#20ba59] text-white font-extrabold text-xs rounded-xl shadow-lg transition-all flex items-center justify-center gap-2 group cursor-pointer"
+                className="flex-1 px-4 py-3 bg-[#25D366] hover:bg-[#20ba59] text-white font-bold text-[13px] rounded-[14px] shadow-[0px_8px_20px_-10px_rgba(37,211,102,0.6)] transition-all flex items-center justify-center gap-2 group cursor-pointer min-h-[44px]"
               >
                 <MessageCircle className="w-4 h-4" />
                 <span>WhatsApp {activeFunnel.advisor.name.split(' ')[0]}</span>
@@ -407,9 +407,9 @@ export const SalesFunnelRouter: React.FC = () => {
 
               <a
                 href={`tel:${COMPANY_INFO.phoneClean}`}
-                className="px-4 py-3 bg-white/10 hover:bg-white/15 text-white font-bold text-xs rounded-xl border border-white/20 transition-all flex items-center justify-center gap-2 text-center"
+                className="px-4 py-3 bg-white/10 hover:bg-white/15 text-white font-bold text-[13px] rounded-[14px] border border-white/20 transition-all flex items-center justify-center gap-2 text-center min-h-[44px]"
               >
-                <Phone className="w-3.5 h-3.5 text-[#C4A46A]" />
+                <Phone className="w-3.5 h-3.5 text-[#D9B878]" />
                 <span>Direct Hotline</span>
               </a>
             </div>
@@ -418,11 +418,11 @@ export const SalesFunnelRouter: React.FC = () => {
           {/* Right Column: Asset Strategy, Yield Benchmarks & Instant Allocation (7 cols) */}
           <div className="lg:col-span-7 space-y-6">
             <div>
-              <div className="text-xs uppercase font-extrabold tracking-widest text-[#C4A46A] mb-1">
+              <div className="text-[11px] uppercase font-bold tracking-widest text-[#D9B878] mb-1">
                 Asset Allocation Dossier
               </div>
-              <h3 className="text-2xl sm:text-3xl font-serif font-black text-white">{activeFunnel.headline}</h3>
-              <p className="text-xs sm:text-sm text-gray-300 mt-2 leading-relaxed">
+              <h3 className="text-2xl sm:text-3xl font-bold text-white tracking-tight">{activeFunnel.headline}</h3>
+              <p className="text-[14px] text-[#A39C8F] mt-2 leading-relaxed">
                 {activeFunnel.description}
               </p>
             </div>
@@ -430,28 +430,28 @@ export const SalesFunnelRouter: React.FC = () => {
             {/* Financial Benchmark Metrics */}
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
               {activeFunnel.metrics.map((m, idx) => (
-                <div key={idx} className="bg-[#0A101D]/60 rounded-xl p-3.5 border border-[#C4A46A]/20">
-                  <div className="text-[11px] text-gray-400">{m.label}</div>
-                  <div className="text-lg font-serif font-black text-[#F5E6CA] my-0.5">{m.value}</div>
-                  <div className="text-[10px] text-[#C4A46A]">{m.detail}</div>
+                <div key={idx} className="bg-[#0A101D]/60 rounded-[16px] p-3.5 border border-[#D9B878]/20">
+                  <div className="text-[11px] text-[#A39C8F] uppercase font-bold">{m.label}</div>
+                  <div className="text-[22px] font-bold text-[#F6F1E9] my-0.5 tracking-tight">{m.value}</div>
+                  <div className="text-[11px] text-[#D9B878]">{m.detail}</div>
                 </div>
               ))}
             </div>
 
             {/* Dynamic Capital & Yield Cashflow Simulator */}
-            <div className="p-4 sm:p-5 rounded-2xl bg-[#080D18]/90 border border-[#C4A46A]/30 space-y-4">
+            <div className="p-5 rounded-[18px] bg-[#080D18]/90 border border-[#D9B878]/30 space-y-4">
               <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
                 <div>
-                  <span className="text-[10px] font-extrabold uppercase tracking-widest text-[#C4A46A] flex items-center gap-1.5">
+                  <span className="text-[11px] font-bold uppercase tracking-widest text-[#D9B878] flex items-center gap-1.5">
                     <TrendingUp className="w-3.5 h-3.5" />
                     <span>Dynamic Capital & Cashflow Simulator</span>
                   </span>
-                  <div className="text-xs text-gray-300">Simulate returns for {activeFunnel.label}</div>
+                  <div className="text-xs text-[#A39C8F] mt-0.5">Simulate returns for {activeFunnel.label}</div>
                 </div>
 
                 <div className="text-left sm:text-right">
-                  <div className="text-[10px] text-gray-400">Target Capital Allocation</div>
-                  <div className="text-base sm:text-lg font-serif font-black text-[#C4A46A]">{formatPKR(budget)}</div>
+                  <div className="text-[11px] text-[#A39C8F] uppercase font-bold">Target Capital Allocation</div>
+                  <div className="text-base sm:text-lg font-bold text-[#D9B878]">{formatPKR(budget)}</div>
                 </div>
               </div>
 
@@ -464,9 +464,9 @@ export const SalesFunnelRouter: React.FC = () => {
                   step={2500000}
                   value={budget}
                   onChange={(e) => setBudget(Number(e.target.value))}
-                  className="w-full accent-[#C4A46A] cursor-pointer"
+                  className="w-full accent-[#D9B878] cursor-pointer"
                 />
-                <div className="flex justify-between text-[10px] text-gray-500 font-mono mt-1">
+                <div className="flex justify-between text-[11px] text-[#A39C8F] font-mono mt-1">
                   <span>PKR 1.00 Cr</span>
                   <span>PKR 3.50 Cr</span>
                   <span>PKR 6.50 Cr</span>
@@ -475,62 +475,62 @@ export const SalesFunnelRouter: React.FC = () => {
 
               {/* Dynamic Simulated Output */}
               <div className="grid grid-cols-3 gap-2.5 pt-1 text-center">
-                <div className="p-2.5 rounded-xl bg-[#0D1525] border border-white/5">
-                  <div className="text-[10px] text-gray-400">Annual Rental</div>
+                <div className="p-3 rounded-[14px] bg-[#0D1525] border border-white/5">
+                  <div className="text-[10px] text-[#A39C8F] uppercase font-bold">Annual Rental</div>
                   <div className="text-xs sm:text-sm font-bold text-emerald-400 mt-0.5">
                     +{formatPKR(Math.round(budget * (activeFunnel.id === 'commercial' ? 0.12 : 0.09)))}
                   </div>
-                  <div className="text-[9px] text-gray-500">Per annum</div>
+                  <div className="text-[10px] text-[#A39C8F]">Per annum</div>
                 </div>
 
-                <div className="p-2.5 rounded-xl bg-[#0D1525] border border-white/5">
-                  <div className="text-[10px] text-gray-400">3-Yr Capital Gain</div>
-                  <div className="text-xs sm:text-sm font-bold text-[#F5E6CA] mt-0.5">
+                <div className="p-3 rounded-[14px] bg-[#0D1525] border border-white/5">
+                  <div className="text-[10px] text-[#A39C8F] uppercase font-bold">3-Yr Capital Gain</div>
+                  <div className="text-xs sm:text-sm font-bold text-[#F6F1E9] mt-0.5">
                     +{formatPKR(Math.round(budget * 0.65))}
                   </div>
-                  <div className="text-[9px] text-[#C4A46A]">Projected growth</div>
+                  <div className="text-[10px] text-[#D9B878]">Projected growth</div>
                 </div>
 
-                <div className="p-2.5 rounded-xl bg-[#0D1525] border border-white/5">
-                  <div className="text-[10px] text-gray-400">Booking (25%)</div>
+                <div className="p-3 rounded-[14px] bg-[#0D1525] border border-white/5">
+                  <div className="text-[10px] text-[#A39C8F] uppercase font-bold">Booking (25%)</div>
                   <div className="text-xs sm:text-sm font-bold text-white mt-0.5">
                     {formatPKR(Math.round(budget * 0.25))}
                   </div>
-                  <div className="text-[9px] text-gray-500">Immediate token</div>
+                  <div className="text-[10px] text-[#A39C8F]">Immediate token</div>
                 </div>
               </div>
             </div>
 
             {/* Recommended Flagship Unit Banner */}
-            <div className="bg-[#0D1627]/90 rounded-2xl p-4 sm:p-5 border border-[#C4A46A]/35 flex flex-col sm:flex-row items-center gap-4">
+            <div className="bg-[#0D1627]/90 rounded-[18px] p-4 sm:p-5 border border-[#D9B878]/35 flex flex-col sm:flex-row items-center gap-4">
               <img
                 src={activeFunnel.recommendedProject.image}
                 alt={activeFunnel.recommendedProject.title}
-                className="w-full sm:w-28 h-20 rounded-xl object-cover border border-[#C4A46A]/40 shrink-0"
+                className="w-full sm:w-28 h-20 rounded-[14px] object-cover border border-[#D9B878]/40 shrink-0"
               />
               <div className="flex-1 text-center sm:text-left">
                 <div className="flex items-center justify-center sm:justify-start gap-2">
-                  <span className="text-[10px] font-bold uppercase tracking-wider text-[#C4A46A]">
+                  <span className="text-[11px] font-bold uppercase tracking-wider text-[#D9B878]">
                     Recommended Prime Allocation
                   </span>
                 </div>
-                <div className="text-base font-serif font-bold text-white">
+                <div className="text-[17px] font-bold text-white tracking-tight mt-0.5">
                   {activeFunnel.recommendedProject.title}
                 </div>
-                <div className="text-xs text-gray-300">
+                <div className="text-[13px] text-[#F6F1E9] mt-0.5">
                   {activeFunnel.recommendedProject.unitType} • Starting at{' '}
-                  <span className="text-[#C4A46A] font-bold">
+                  <span className="text-[#D9B878] font-bold">
                     {formatPKR(activeFunnel.recommendedProject.priceStarting)}
                   </span>
                 </div>
-                <div className="text-[11px] text-gray-400 mt-1 line-clamp-1">
+                <div className="text-[11px] text-[#A39C8F] mt-1 line-clamp-1">
                   {activeFunnel.recommendedProject.highlight}
                 </div>
               </div>
 
               <Link
                 href={`/projects/${activeFunnel.recommendedProject.slug}`}
-                className="px-4 py-2 bg-[#C4A46A] hover:bg-[#D4B57C] text-[#101B2E] font-bold text-xs rounded-xl transition-all shrink-0 flex items-center gap-1.5 cursor-pointer"
+                className="px-4 py-2.5 bg-[#D9B878] hover:bg-[#E5C98E] text-[#1C1305] font-bold text-[13px] rounded-[14px] transition-all shrink-0 flex items-center gap-1.5 cursor-pointer min-h-[44px] shadow-[0px_8px_30px_-10px_rgba(217,184,120,0.55)]"
               >
                 <span>View Details</span>
                 <ArrowRight className="w-3.5 h-3.5" />
@@ -538,11 +538,11 @@ export const SalesFunnelRouter: React.FC = () => {
             </div>
 
             {/* Step 3: Fast In-Funnel Lead Dispatch Form */}
-            <div className="bg-[#0A101D]/70 rounded-2xl p-5 border border-[#C4A46A]/20">
+            <div className="bg-[#0A101D]/70 rounded-[18px] p-5 border border-[#D9B878]/20">
               {submitted ? (
-                <div className="p-4 rounded-xl bg-emerald-950/60 border border-emerald-500/40 text-center space-y-2 animate-in fade-in">
+                <div className="p-4 rounded-[14px] bg-emerald-950/60 border border-emerald-500/40 text-center space-y-2 animate-in fade-in">
                   <CheckCircle2 className="w-8 h-8 text-emerald-400 mx-auto" />
-                  <div className="text-sm font-bold text-emerald-200">
+                  <div className="text-[14px] font-bold text-emerald-200">
                     Lead Assigned Directly to {activeFunnel.advisor.name}
                   </div>
                   <p className="text-xs text-emerald-300/80">
@@ -553,11 +553,11 @@ export const SalesFunnelRouter: React.FC = () => {
               ) : (
                 <form onSubmit={handleLeadSubmit} className="space-y-3">
                   <div className="flex items-center justify-between">
-                    <span className="text-xs font-bold text-white flex items-center gap-1.5">
-                      <Sparkles className="w-3.5 h-3.5 text-[#C4A46A]" />
+                    <span className="text-[13px] font-bold text-white flex items-center gap-1.5">
+                      <Sparkles className="w-3.5 h-3.5 text-[#D9B878]" />
                       <span>Instant VIP Consultation Dispatch</span>
                     </span>
-                    <span className="text-[10px] text-gray-400">Direct routed to {activeFunnel.advisor.name}</span>
+                    <span className="text-[11px] text-[#A39C8F]">Direct routed to {activeFunnel.advisor.name}</span>
                   </div>
 
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
@@ -567,7 +567,7 @@ export const SalesFunnelRouter: React.FC = () => {
                       value={leadName}
                       onChange={(e) => setLeadName(e.target.value)}
                       placeholder="Your Full Name"
-                      className="w-full bg-[#101B2E] border border-[#C4A46A]/30 rounded-xl px-3.5 py-2.5 text-xs text-white placeholder-gray-500 focus:outline-hidden focus:border-[#C4A46A]"
+                      className="w-full bg-[#101B2E] border border-[#D9B878]/30 rounded-[14px] px-3.5 py-2.5 text-[13px] text-white placeholder-gray-500 focus:outline-hidden focus:border-[#D9B878] min-h-[44px]"
                     />
                     <input
                       type="tel"
@@ -575,14 +575,14 @@ export const SalesFunnelRouter: React.FC = () => {
                       value={leadPhone}
                       onChange={(e) => setLeadPhone(e.target.value)}
                       placeholder="WhatsApp / Phone (+92 300...)"
-                      className="w-full bg-[#101B2E] border border-[#C4A46A]/30 rounded-xl px-3.5 py-2.5 text-xs text-white placeholder-gray-500 focus:outline-hidden focus:border-[#C4A46A]"
+                      className="w-full bg-[#101B2E] border border-[#D9B878]/30 rounded-[14px] px-3.5 py-2.5 text-[13px] text-white placeholder-gray-500 focus:outline-hidden focus:border-[#D9B878] min-h-[44px]"
                     />
                   </div>
 
                   <button
                     type="submit"
                     disabled={isSubmitting}
-                    className="w-full py-2.5 bg-[#C4A46A] hover:bg-[#D4B57C] text-[#101B2E] font-extrabold text-xs rounded-xl transition-all shadow-md flex items-center justify-center gap-2 cursor-pointer disabled:opacity-50"
+                    className="w-full min-h-[44px] py-2.5 bg-[#D9B878] hover:bg-[#E5C98E] text-[#1C1305] font-bold text-[13px] rounded-[14px] transition-all shadow-[0px_8px_30px_-10px_rgba(217,184,120,0.55)] flex items-center justify-center gap-2 cursor-pointer disabled:opacity-50"
                   >
                     <span>
                       {isSubmitting ? 'Routing to Desk...' : `Dispatch Inquiry Directly to ${activeFunnel.advisor.name}`}
