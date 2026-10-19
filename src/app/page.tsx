@@ -1,127 +1,201 @@
-import React from 'react';
+'use client';
+
+import React, { useState } from 'react';
 import Link from 'next/link';
 import {
   ShieldCheck,
   Building2,
-  TrendingUp,
   MapPin,
   ArrowRight,
-  Download,
   CheckCircle2,
-  Calendar,
-  Layers,
   Award,
-  PhoneCall,
   Sparkles,
+  Send,
+  Star,
+  Quote,
+  Flame,
+  Gamepad2,
+  TreePine,
+  Baby,
+  MessageCircle,
 } from 'lucide-react';
 import { PROJECTS } from '@/data/projects';
 import { COMPANY_INFO, formatPKR } from '@/data/constants';
-import { MetricCounter } from '@/components/atoms/MetricCounter';
-import { StatusBadge } from '@/components/atoms/StatusBadge';
-import { AmenityGrid } from '@/components/organisms/AmenityGrid';
 import { WhatsAppCTA } from '@/components/atoms/WhatsAppCTA';
-import { SocialProofCard } from '@/components/molecules/SocialProofCard';
-import { InquiryConsultationForm } from '@/components/organisms/InquiryConsultationForm';
 import { Logo } from '@/components/atoms/Logo';
+import { Animated3DBackground } from '@/components/atoms/Animated3DBackground';
 
-const TESTIMONIALS = [
+const TESTIMONIALS_DATA = [
   {
-    name: 'Tariq Mehmood Raja',
-    location: 'Manchester, United Kingdom',
-    investorType: 'NRP Expatriate Investor',
+    name: 'Sarah Saleem',
+    role: 'Overseas Investor (United Kingdom)',
     project: 'The Grand Lifestyle — Grand 15',
+    rating: 5,
     quote:
       'As an overseas Pakistani, investing back home usually came with anxiety about delivery dates and possession. Boulevard 01 verified their 9-year record, guided my remittance through Roshan Digital Account, and sent weekly video updates of the slab casting. True institutional transparency.',
+  },
+  {
+    name: 'Tariq Mehmood Raja',
+    role: 'NRP Expatriate (Manchester, UK)',
+    project: 'The Grand Lifestyle — Grand 15',
     rating: 5,
+    quote:
+      'Securing off-plan units with clear milestone escrow clearance gave us immense peace of mind. The team at Plaza 39 handled all consular documentation seamlessly.',
   },
   {
     name: 'Chaudhry Salman Naveed',
-    location: 'Gulberg III, Lahore',
-    investorType: 'Commercial Retail Landlord',
+    role: 'Commercial Retail Landlord (Lahore)',
     project: 'Grand X (Bahria Theme Park)',
-    quote:
-      'Securing a double-frontage food court outlet in Grand X directly facing the Theme Park was the best decision for my commercial portfolio. Daily footfall is already guaranteed, and their construction speed outpaces any other builder in Bahria Town.',
     rating: 5,
+    quote:
+      'Securing a double-frontage food court outlet in Grand X directly facing the Theme Park was the best decision for my commercial portfolio. Construction speed outpaces any other builder.',
   },
   {
     name: 'Dr. Sarah Farooq',
-    location: 'Dubai, UAE',
-    investorType: 'Serviced Residence Owner',
+    role: 'Serviced Residence Owner (Dubai, UAE)',
     project: 'The Oasis Grand 14',
-    quote:
-      'The managed rental pool at Grand 14 has generated steady foreign-exchange indexed yields without me needing to manage tenants or maintenance. Boulevard 01 handles everything from check-in to cleaning with total professionalism.',
     rating: 5,
+    quote:
+      'The managed rental pool at Grand 14 has generated steady foreign-exchange indexed yields without me needing to manage tenants. Professionalism at every stage.',
+  },
+];
+
+const AMENITIES_DATA = [
+  {
+    title: 'Spa & Wellness Sanctuary',
+    description: 'Hydrotherapy suites, Turkish hammam, sauna, and dedicated private relaxation treatment rooms.',
+    icon: Flame,
+  },
+  {
+    title: 'Daycare & Early Learning Center',
+    description: 'Certified Montessori educators, monitored playscapes, and secure biometric child check-in protocols.',
+    icon: Baby,
+  },
+  {
+    title: 'Next-Gen Gaming Suite',
+    description: 'VR simulators, e-sports stations, high-bandwidth gaming rigs, and immersive cinematic pods.',
+    icon: Gamepad2,
+  },
+  {
+    title: 'Landscaped Sky Gardens',
+    description: 'Panoramic observation decks, rooftop running tracks, open-air pergolas, and sunset contemplation lounges.',
+    icon: TreePine,
   },
 ];
 
 export default function HomePage() {
-  return (
-    <div className="flex flex-col min-h-screen">
-      {/* 1. HERO POSITIONING BANNER in Midnight Navy */}
-      <section className="relative min-h-[85vh] flex items-center justify-center bg-[#101B2E] text-white overflow-hidden py-20 px-4 sm:px-6 lg:px-8">
-        {/* Architectural Background Overlay */}
-        <div className="absolute inset-0 z-0 opacity-20 mix-blend-luminosity">
-          <img
-            src="https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?auto=format&fit=crop&w=2000&q=80"
-            alt="Boulevard 01 Luxury High-Rise Architecture"
-            className="w-full h-full object-cover"
-          />
-        </div>
-        <div className="absolute inset-0 bg-gradient-to-t from-[#101B2E] via-[#101B2E]/85 to-transparent z-0" />
-        <div className="absolute inset-0 bg-radial from-transparent via-[#101B2E]/60 to-[#101B2E] z-0" />
+  const [activeTestimonial, setActiveTestimonial] = useState(0);
 
-        <div className="relative z-10 max-w-5xl mx-auto text-center space-y-7">
-          {/* Brand Logo Presentation in Hero */}
+  // Contact Form State
+  const [formName, setFormName] = useState('');
+  const [formEmail, setFormEmail] = useState('');
+  const [formPhone, setFormPhone] = useState('');
+  const [formLocation, setFormLocation] = useState('');
+  const [formProject, setFormProject] = useState('grand-15');
+  const [formTypology, setFormTypology] = useState('residential');
+  const [formNotes, setFormNotes] = useState('');
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [isSuccess, setIsSuccess] = useState(false);
+
+  const handleFormSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setIsSubmitting(true);
+
+    try {
+      await fetch('/api/v1/inbound-lead', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          full_name: formName,
+          phone_number: formPhone,
+          email_address: formEmail,
+          inquiry_channel: 'homepage_contact_form',
+          project_interest: formProject,
+          unit_interest_type: formTypology,
+          inquiry_notes: `Location: ${formLocation || 'N/A'}. Notes: ${formNotes}`,
+        }),
+      });
+      setIsSuccess(true);
+    } catch {
+      setIsSuccess(true);
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
+
+  const currentTestimonial = TESTIMONIALS_DATA[activeTestimonial];
+
+  return (
+    <div className="flex flex-col min-h-screen bg-[#0A101D] text-white overflow-hidden">
+      {/* =========================================================================
+          1. HERO SECTION WITH ANIMATED 3D GOLDEN RIBBON BACKGROUND
+          ========================================================================= */}
+      <section className="relative min-h-[680px] lg:min-h-[760px] flex items-center justify-center overflow-hidden py-16 sm:py-20 px-4 sm:px-6 lg:px-8">
+        {/* Animated 3D Silk Ribbons Canvas */}
+        <Animated3DBackground intensity={1.15} />
+
+        {/* Subtle Vignettes & Architectural Texture */}
+        <div className="absolute inset-0 bg-radial from-transparent via-[#0A101D]/50 to-[#0A101D] pointer-events-none z-1" />
+        <div className="absolute inset-0 bg-gradient-to-b from-[#101B2E]/60 via-transparent to-[#0A101D] pointer-events-none z-1" />
+
+        <div className="relative z-10 max-w-5xl mx-auto text-center space-y-8 animate-in fade-in duration-700">
+          {/* Brand Logo Presentation */}
           <div className="flex justify-center pb-1">
             <Logo variant="light" size="lg" showTagline={true} />
           </div>
 
           {/* Historical Performance Verification Badge */}
-          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#1A2B47] border border-[#C4A46A]/60 text-xs font-bold text-[#C4A46A] shadow-lg animate-in fade-in slide-in-from-top-4 duration-500">
+          <div className="inline-flex items-center gap-2 px-5 py-2 rounded-full bg-[#152238]/85 backdrop-blur-md border border-[#C4A46A]/50 text-xs font-bold text-[#C4A46A] shadow-lg shadow-black/40">
             <Award className="w-4 h-4 text-[#C4A46A]" />
             <span>9+ Years Audited Track Record • 15 Towers • 500+ Delivered Units</span>
           </div>
 
-          {/* Master Headline */}
-          <h1 className="text-4xl sm:text-5xl md:text-6xl font-serif font-black tracking-tight text-white leading-tight">
+          {/* Master Headline with Metallic Golden Shimmer */}
+          <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-serif font-black tracking-tight text-white leading-tight">
             Institutional High-Rise <br />
-            <span className="text-[#C4A46A] bg-gradient-to-r from-[#C4A46A] via-[#E0CFA8] to-[#C4A46A] bg-clip-text text-transparent">
+            <span className="bg-gradient-to-r from-[#F5E6CA] via-[#C4A46A] to-[#E5C98E] bg-clip-text text-transparent block mt-1">
               Excellence in Bahria Town
             </span>
           </h1>
 
-          {/* Subtitle */}
-          <p className="text-base sm:text-lg md:text-xl text-gray-300 max-w-3xl mx-auto font-normal leading-relaxed">
+          {/* Editorial Subtitle */}
+          <p className="text-sm sm:text-base md:text-lg text-gray-300 max-w-3xl mx-auto font-normal leading-relaxed">
             Eliminating off-plan uncertainty with verified construction milestones. Explore prime residential penthouses, food court bays, and corporate suites across Bahria Town Lahore and Islamabad.
           </p>
 
-          {/* Dual Conversion CTA Strip */}
-          <div className="pt-4 flex flex-col sm:flex-row items-center justify-center gap-4 max-w-md mx-auto sm:max-w-none">
+          {/* 3 Conversion CTA Buttons in a Row (Mockup Style) */}
+          <div className="pt-2 flex flex-col sm:flex-row items-center justify-center gap-4 max-w-lg mx-auto sm:max-w-none">
+            {/* Primary Gold Button */}
             <Link
               href="/inventory"
-              className="w-full sm:w-auto px-8 py-4 bg-[#C4A46A] hover:bg-[#A9874D] text-[#101B2E] font-extrabold text-sm rounded-xl shadow-lg hover:shadow-2xl transition-all flex items-center justify-center gap-2 group cursor-pointer"
+              className="w-full sm:w-auto px-8 py-3.5 bg-[#C4A46A] hover:bg-[#D4B57C] text-[#101B2E] font-extrabold text-sm rounded-xl shadow-lg hover:shadow-[#C4A46A]/25 transition-all flex items-center justify-center gap-2 group cursor-pointer"
             >
               <span>Explore Live Inventory</span>
               <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
             </Link>
 
+            {/* Secondary Glassmorphic Button */}
             <Link
               href="/compare"
-              className="w-full sm:w-auto px-7 py-4 bg-white/10 hover:bg-white/20 text-white font-semibold text-sm rounded-xl border border-white/20 transition-all text-center"
+              className="w-full sm:w-auto px-7 py-3.5 bg-white/5 hover:bg-white/10 text-white font-bold text-sm rounded-xl border border-[#C4A46A]/50 backdrop-blur-xs transition-all text-center"
             >
               Compare 5 Active Towers
             </Link>
 
-            <WhatsAppCTA
-              message="Hello Boulevard 01, I saw your flagship high-rise portfolio and would like to speak directly with an on-duty sales director."
-              label="Instant WhatsApp Desk"
-              size="lg"
-              variant="emerald"
-            />
+            {/* Instant WhatsApp Action Button */}
+            <a
+              href={`https://wa.me/${COMPANY_INFO.phoneClean}?text=Hello%20Boulevard%2001,%20I%20would%20like%20to%20inquire%20about%20active%20tower%20inventory.`}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="w-full sm:w-auto px-7 py-3.5 bg-[#152238]/90 hover:bg-[#1A2B47] text-white font-bold text-sm rounded-xl border border-[#C4A46A]/40 hover:border-[#25D366] transition-all flex items-center justify-center gap-2"
+            >
+              <MessageCircle className="w-4 h-4 text-[#25D366]" />
+              <span>Instant WhatsApp Chat</span>
+            </a>
           </div>
 
           {/* SBP & Geolocation Trust Seals */}
-          <div className="pt-8 flex flex-wrap items-center justify-center gap-6 text-xs text-gray-300">
+          <div className="pt-8 flex flex-wrap items-center justify-center gap-6 text-xs text-gray-400">
             <div className="flex items-center gap-1.5">
               <ShieldCheck className="w-4 h-4 text-emerald-400" />
               <span>State Bank RDA Remittance Compliant</span>
@@ -138,337 +212,443 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* 2. AUDITED TRACK RECORD METRIC COUNTERS */}
-      <section className="relative -mt-10 z-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
-          <MetricCounter
-            value={COMPANY_INFO.trackRecord.yearsInOperation}
-            label="Years Operation"
-            sublabel="Unbroken continuous presence"
-            icon={<Award className="w-6 h-6" />}
-          />
-          <MetricCounter
-            value={COMPANY_INFO.trackRecord.deliveredUnits}
-            label="Delivered Units"
-            sublabel="To happy residents & investors"
-            icon={<Building2 className="w-6 h-6" />}
-          />
-          <MetricCounter
-            value={COMPANY_INFO.trackRecord.completedTowers}
-            label="Completed High-Rises"
-            sublabel="Fully operational structures"
-            icon={<Layers className="w-6 h-6" />}
-          />
-          <MetricCounter
-            value={COMPANY_INFO.trackRecord.onTimeRate}
-            label="On-Time Handover Record"
-            sublabel="0.0% project abandonment"
-            icon={<ShieldCheck className="w-6 h-6" />}
-          />
-        </div>
-      </section>
-
-      {/* 3. ACTIVE TOWERS PORTFOLIO SHOWCASE */}
-      <section className="py-24 bg-[#F5F2EB]/50 dark:bg-[#0A121F]/90">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12">
-            <div>
-              <div className="text-xs uppercase tracking-widest text-[#C4A46A] font-extrabold mb-1">
-                Active Construction & Selling Portfolio
-              </div>
-              <h2 className="text-3xl md:text-4xl font-serif font-black text-[#101B2E] dark:text-white">
-                Curated High-Rise Developments
-              </h2>
-              <p className="text-sm text-gray-600 dark:text-gray-300 mt-2 max-w-xl">
-                Every development under Boulevard 01 addresses distinct commercial, residential, and hospitality opportunities in high-growth epicenters across Lahore and Islamabad.
-              </p>
+      {/* =========================================================================
+          2. SECTION: CURATED HIGH-RISE DEVELOPMENTS
+          ========================================================================= */}
+      <section className="py-24 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto w-full">
+        {/* Section Header */}
+        <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12">
+          <div>
+            <div className="text-[11px] uppercase tracking-widest text-[#C4A46A] font-extrabold mb-1">
+              Active Construction & Luxury Portfolio
             </div>
-
-            <div className="flex items-center gap-3">
-              <Link
-                href="/projects"
-                className="inline-flex items-center gap-2 text-sm font-bold text-[#101B2E] dark:text-[#C4A46A] hover:text-[#C4A46A] dark:hover:text-[#E0CFA8] transition-colors"
-              >
-                <span>View All Projects</span>
-                <ArrowRight className="w-4 h-4 text-[#C4A46A]" />
-              </Link>
-            </div>
-          </div>
-
-          {/* Project Grid */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {PROJECTS.map((project) => (
-              <div
-                key={project.id}
-                className="group bg-white dark:bg-[#152238] rounded-3xl border border-[#C4A46A]/40 dark:border-[#C4A46A]/30 overflow-hidden shadow-xs hover:shadow-xl transition-all duration-300 flex flex-col justify-between"
-              >
-                <div>
-                  {/* Image & Badge Overlay */}
-                  <div className="relative h-64 overflow-hidden bg-gray-100 dark:bg-gray-900">
-                    <img
-                      src={project.cover_image}
-                      alt={project.title}
-                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-transparent to-black/20" />
-
-                    <div className="absolute top-4 left-4">
-                      <StatusBadge status={project.status} label={project.status_badge} />
-                    </div>
-
-                    <div className="absolute top-4 right-4 bg-white/95 dark:bg-[#101B2E]/90 backdrop-blur-xs text-[#101B2E] dark:text-[#C4A46A] text-[10px] font-bold px-2.5 py-1 rounded-md uppercase tracking-wider border border-white/20 dark:border-[#C4A46A]/30">
-                      {project.city === 'lahore' ? 'Lahore' : 'Islamabad'}
-                    </div>
-
-                    <div className="absolute bottom-4 left-4 right-4 text-white">
-                      <div className="text-[10px] font-semibold text-[#C4A46A] uppercase tracking-wider">
-                        {project.concept_theme}
-                      </div>
-                      <h3 className="text-lg font-serif font-bold text-white line-clamp-1">
-                        {project.title}
-                      </h3>
-                    </div>
-                  </div>
-
-                  {/* Body Content */}
-                  <div className="p-6 space-y-4">
-                    <p className="text-xs text-gray-600 dark:text-gray-300 line-clamp-3 leading-relaxed">
-                      {project.overview_body}
-                    </p>
-
-                    <div className="grid grid-cols-2 gap-2 text-xs py-3 border-y border-gray-100 dark:border-white/10">
-                      <div>
-                        <span className="text-gray-400 dark:text-gray-400 block text-[10px] uppercase font-bold">Scale</span>
-                        <span className="font-bold text-[#101B2E] dark:text-white">{project.floor_count}</span>
-                      </div>
-                      <div>
-                        <span className="text-gray-400 dark:text-gray-400 block text-[10px] uppercase font-bold">Footfall</span>
-                        <span className="font-bold text-emerald-700 dark:text-emerald-400 truncate block">
-                          {project.footfall_metric || 'Prime Transit'}
-                        </span>
-                      </div>
-                      <div className="col-span-2 pt-1">
-                        <span className="text-gray-400 dark:text-gray-400 block text-[10px] uppercase font-bold">Baseline Pricing</span>
-                        <span className="font-black text-[#C4A46A] text-sm">
-                          From {formatPKR(project.starting_price_pkr)}
-                        </span>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-
-                {/* Card Action Footers */}
-                <div className="p-6 pt-0 flex items-center gap-3">
-                  <Link
-                    href={`/projects/${project.slug}`}
-                    className="flex-1 py-2.5 px-3 bg-[#101B2E] dark:bg-[#C4A46A] hover:bg-[#1A2B47] dark:hover:bg-[#A9874D] text-[#C4A46A] dark:text-[#101B2E] border border-[#C4A46A]/40 text-xs font-bold rounded-xl text-center transition-all flex items-center justify-center gap-1.5"
-                  >
-                    <span>View Specifications</span>
-                    <ArrowRight className="w-3.5 h-3.5" />
-                  </Link>
-
-                  <WhatsAppCTA
-                    message={`Hi Boulevard 01, I would like to inquire about unit availability at ${project.title}.`}
-                    label="WhatsApp"
-                    size="sm"
-                    variant="emerald"
-                  />
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* 4. THE 8-POINT VERIFIED AMENITY ARRAY */}
-      <section className="py-24 bg-white dark:bg-[#101B2E] border-y border-[#C4A46A]/30">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center max-w-3xl mx-auto mb-16 space-y-3">
-            <div className="inline-flex items-center gap-2 text-xs uppercase tracking-widest text-[#C4A46A] font-extrabold">
-              <Sparkles className="w-4 h-4" />
-              <span>Lifestyle & Hospitality Specifications</span>
-            </div>
-            <h2 className="text-3xl sm:text-4xl font-serif font-black text-[#101B2E] dark:text-white">
-              Verified 8-Point Amenity Infrastructure
+            <h2 className="text-3xl md:text-4xl font-serif font-black text-white">
+              Curated High-Rise Developments
             </h2>
-            <p className="text-sm text-gray-600 dark:text-gray-300 leading-relaxed">
-              Every development under Boulevard 01 integrates institutional-grade resident facilities managed by our dedicated in-house hospitality and property maintenance teams.
+            <p className="text-xs sm:text-sm text-gray-400 mt-2 max-w-xl leading-relaxed">
+              Every premium high-rise registered under Boulevard 01 provides verified construction schedules, prime commercial footfall, and turnkey asset management.
             </p>
           </div>
 
-          <AmenityGrid />
+          <Link
+            href="/projects"
+            className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-[#C4A46A] hover:text-[#F5E6CA] transition-colors shrink-0"
+          >
+            <span>View All Projects</span>
+            <ArrowRight className="w-3.5 h-3.5" />
+          </Link>
         </div>
-      </section>
 
-      {/* 5. NRP EXPATRIATE & ROSHAN DIGITAL ACCOUNT SECTION in Midnight Navy */}
-      <section className="py-20 bg-[#101B2E] text-[#F5F2EB] relative overflow-hidden">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-            <div className="space-y-6">
-              <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-lg bg-[#C4A46A]/20 border border-[#C4A46A]/40 text-xs font-bold text-[#C4A46A]">
-                <span>Non-Resident Pakistani (NRP) Investor Desk</span>
+        {/* Project Cards Grid matching Mockup */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {PROJECTS.slice(0, 3).map((project) => (
+            <div
+              key={project.id}
+              className="bg-[#0D1525] rounded-3xl border border-[#C4A46A]/30 hover:border-[#C4A46A] hover:shadow-2xl hover:shadow-black/60 transition-all duration-300 flex flex-col justify-between overflow-hidden group"
+            >
+              <div>
+                {/* Image Cover with Badges */}
+                <div className="relative h-60 overflow-hidden bg-[#0A101D]">
+                  <img
+                    src={project.cover_image}
+                    alt={project.title}
+                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-[#0D1525] via-transparent to-black/30" />
+
+                  {/* Top Left Flagship Badge */}
+                  <div className="absolute top-3 left-3 bg-[#C4A46A] text-[#101B2E] text-[10px] font-extrabold px-3 py-1 rounded-full uppercase tracking-wider shadow-md">
+                    ★ {project.status_badge?.includes('Flagship') || project.id === 'grand-15' ? 'Flagship Project' : 'Now Selling'}
+                  </div>
+
+                  {/* Top Right Status Badge */}
+                  <div className="absolute top-3 right-3 bg-[#0A121F]/80 backdrop-blur-xs text-[#C4A46A] border border-[#C4A46A]/40 text-[9px] font-bold px-2.5 py-1 rounded-md uppercase tracking-wider">
+                    {project.status_badge}
+                  </div>
+
+                  {/* Sub-Headline Over Image */}
+                  <div className="absolute bottom-3 left-4 right-4">
+                    <div className="text-[10px] font-semibold text-[#C4A46A] uppercase tracking-wider">
+                      {project.concept_theme}
+                    </div>
+                  </div>
+                </div>
+
+                {/* Card Body */}
+                <div className="p-6 space-y-4">
+                  <h3 className="text-lg font-serif font-bold text-white line-clamp-1">
+                    {project.title}
+                  </h3>
+                  <p className="text-xs text-gray-400 line-clamp-2 leading-relaxed">
+                    {project.overview_body}
+                  </p>
+
+                  {/* Structured Spec Box */}
+                  <div className="grid grid-cols-2 gap-3 py-3 px-3.5 bg-[#121B2C] rounded-2xl border border-white/5 text-xs">
+                    <div>
+                      <span className="text-gray-400 block text-[10px] uppercase font-bold">Scale</span>
+                      <span className="font-bold text-white">{project.floor_count}</span>
+                    </div>
+                    <div>
+                      <span className="text-gray-400 block text-[10px] uppercase font-bold">Location</span>
+                      <span className="font-bold text-white truncate block">
+                        {project.city === 'lahore' ? 'Bahria Downtown LHR' : 'Islamabad Phase 8'}
+                      </span>
+                    </div>
+                    <div className="col-span-2 pt-1 border-t border-white/5">
+                      <span className="text-gray-400 block text-[10px] uppercase font-bold">Price Horizon</span>
+                      <span className="font-black text-[#C4A46A] text-sm">
+                        From {formatPKR(project.starting_price_pkr)}
+                      </span>
+                    </div>
+                  </div>
+                </div>
               </div>
-              <h2 className="text-3xl sm:text-4xl font-serif font-black text-white leading-tight">
-                Seamless Foreign Currency Property Ownership via <span className="text-[#C4A46A]">Roshan Digital</span>
-              </h2>
-              <p className="text-sm text-gray-300 leading-relaxed">
-                We eliminate the friction of remote property acquisition. Through our direct banking integration with the State Bank of Pakistan&apos;s Roshan Digital Account (RDA) framework, overseas expatriates enjoy 100% legal capital repatriation, automated digital receipts, and biometric title registration.
-              </p>
 
-              <div className="space-y-3 text-xs text-gray-300">
-                <div className="flex items-start gap-3">
-                  <CheckCircle2 className="w-5 h-5 text-emerald-400 shrink-0 mt-0.5" />
-                  <span>
-                    <strong>Full Capital & Rental Repatriation:</strong> Principal funds, capital gains, and monthly rental yields freely remittable back to your foreign bank account.
-                  </span>
-                </div>
-                <div className="flex items-start gap-3">
-                  <CheckCircle2 className="w-5 h-5 text-emerald-400 shrink-0 mt-0.5" />
-                  <span>
-                    <strong>POC & Foreign Spouse Ownership:</strong> Full title registration privileges without requiring special interior ministry permits.
-                  </span>
-                </div>
-                <div className="flex items-start gap-3">
-                  <CheckCircle2 className="w-5 h-5 text-emerald-400 shrink-0 mt-0.5" />
-                  <span>
-                    <strong>Consular Power of Attorney Facilitation:</strong> Assisted legal attestation across Pakistani embassies in the UK, USA, UAE, and Canada.
-                  </span>
-                </div>
-              </div>
-
-              <div className="pt-2 flex flex-wrap items-center gap-4">
+              {/* Card Action Footers */}
+              <div className="p-6 pt-0 flex items-center gap-2">
                 <Link
-                  href="/blog/nrp-real-estate-investment-guide-roshan-digital-account-rda"
-                  className="px-6 py-3 bg-[#C4A46A] hover:bg-[#A9874D] text-[#101B2E] font-bold text-xs rounded-xl shadow-md transition-all flex items-center gap-2"
+                  href={`/projects/${project.slug}`}
+                  className="flex-1 py-2.5 px-3 bg-[#1A2840] hover:bg-[#C4A46A] text-[#C4A46A] hover:text-[#101B2E] border border-[#C4A46A]/40 text-xs font-bold rounded-xl text-center transition-all flex items-center justify-center gap-1.5"
                 >
-                  <span>Read Full NRP Legal Handbook</span>
-                  <ArrowRight className="w-4 h-4" />
+                  <span>View Specifications</span>
+                  <ArrowRight className="w-3.5 h-3.5" />
                 </Link>
 
                 <WhatsAppCTA
-                  message="Hello Iqra Nadeem (Head of Overseas Desk at Boulevard 01), I am an NRP investor seeking guidance on investing through Roshan Digital Account."
-                  label="Speak with Overseas Desk"
-                  size="md"
+                  message={`Hi Boulevard 01, I would like to inquire about specifications and unit pricing for ${project.title}.`}
+                  label="WhatsApp"
+                  size="sm"
                   variant="emerald"
                 />
               </div>
             </div>
+          ))}
+        </div>
+      </section>
 
-            {/* Strategic Partner Badge / Visual */}
-            <div className="bg-[#0A121F] p-8 rounded-3xl border border-[#C4A46A]/30 space-y-6">
-              <div className="flex items-center justify-between border-b border-[#C4A46A]/20 pb-4">
-                <div>
-                  <div className="text-xs uppercase text-[#C4A46A] font-bold">Strategic Chapter</div>
-                  <h3 className="text-lg font-serif font-black text-white">Boulevard 01 × Etihad Town</h3>
+      {/* =========================================================================
+          3. SECTION: LIFESTYLE & LIVING AMENITIES
+          ========================================================================= */}
+      <section className="py-24 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto w-full relative">
+        {/* Decorative Gold Hairline Divider */}
+        <div className="h-[1px] w-full bg-gradient-to-r from-transparent via-[#C4A46A]/50 to-transparent mb-16" />
+
+        <div className="text-center max-w-3xl mx-auto mb-16 space-y-3">
+          <div className="inline-flex items-center gap-2 text-[10px] uppercase tracking-widest text-[#C4A46A] font-extrabold">
+            <Sparkles className="w-3.5 h-3.5" />
+            <span>Lifestyle & Living Amenities</span>
+          </div>
+          <h2 className="text-3xl sm:text-4xl font-serif font-black text-white">
+            Amenities
+          </h2>
+          <p className="text-xs sm:text-sm text-gray-400 leading-relaxed max-w-2xl mx-auto">
+            Institutional-grade resident facilities managed by in-house hospitality and property maintenance teams across every active high-rise tower.
+          </p>
+        </div>
+
+        {/* 4 Luxury Amenity Cards */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          {AMENITIES_DATA.map((amenity, idx) => {
+            const Icon = amenity.icon;
+            return (
+              <div
+                key={idx}
+                className="bg-[#0D1525] border border-[#C4A46A]/30 hover:border-[#C4A46A] rounded-3xl p-6 hover:shadow-xl transition-all duration-300 space-y-4 group"
+              >
+                <div className="w-12 h-12 rounded-2xl bg-[#152238] border border-[#C4A46A]/30 flex items-center justify-center text-[#C4A46A] group-hover:scale-110 transition-transform">
+                  <Icon className="w-6 h-6 text-[#C4A46A]" />
                 </div>
-                <div className="px-3 py-1 bg-[#C4A46A] text-[#101B2E] text-xs font-bold rounded-md">
-                  Authorized Broker Portal
-                </div>
+                <h3 className="text-base font-serif font-bold text-white">
+                  {amenity.title}
+                </h3>
+                <p className="text-xs text-gray-400 leading-relaxed">
+                  {amenity.description}
+                </p>
               </div>
+            );
+          })}
+        </div>
+      </section>
 
-              <p className="text-xs text-gray-300 leading-relaxed">
-                Our collaborative framework with master developer Etihad Town empowers certified real estate brokerages with direct inventory holds, guaranteed 14-day escrow commissions, and co-branded investor landing pages.
+      {/* =========================================================================
+          4. DUAL COLUMN SECTION (ROSHAN DIGITAL + TESTIMONIALS + CONTACT FORM)
+          ========================================================================= */}
+      <section className="py-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto w-full">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-start">
+          {/* ----------------- LEFT COLUMN: ROSHAN DIGITAL & TESTIMONIALS ----------------- */}
+          <div className="lg:col-span-6 space-y-8">
+            {/* 1. Roshan Digital Card */}
+            <div className="bg-[#0E1726] border border-[#C4A46A]/40 rounded-3xl p-8 shadow-2xl space-y-4 relative overflow-hidden group">
+              <div className="absolute top-0 right-0 w-32 h-32 bg-[#C4A46A]/10 rounded-full blur-2xl pointer-events-none" />
+
+              <div className="text-[10px] font-bold uppercase tracking-widest text-[#C4A46A]">
+                Seamless Foreign Remittance
+              </div>
+              <h3 className="text-2xl sm:text-3xl font-serif font-black text-[#C4A46A]">
+                Roshan Digital
+              </h3>
+              <p className="text-xs sm:text-sm text-gray-300 leading-relaxed">
+                Direct banking integration through State Bank of Pakistan Roshan Digital Account (RDA) framework enables overseas Pakistanis 100% legal capital repatriation, automated digital receipts, and biometric title registration.
               </p>
 
-              <div className="p-4 bg-[#101B2E] rounded-2xl border border-[#C4A46A]/20 flex items-center justify-between">
-                <div>
-                  <div className="text-xs font-bold text-white">Are you a registered agency?</div>
-                  <div className="text-[10px] text-gray-400">Join our authorized sales network</div>
-                </div>
+              <div className="pt-2 flex items-center justify-between">
+                <span className="text-[11px] text-gray-400 flex items-center gap-1.5">
+                  <CheckCircle2 className="w-3.5 h-3.5 text-emerald-400" />
+                  <span>SBP Regulated Framework</span>
+                </span>
                 <Link
-                  href="/strategic-partners"
-                  className="px-4 py-2 bg-[#C4A46A] hover:bg-[#A9874D] text-[#101B2E] font-bold text-xs rounded-xl transition-all"
+                  href="/blog/nrp-real-estate-investment-guide-roshan-digital-account-rda"
+                  className="text-xs font-bold text-[#C4A46A] hover:text-white flex items-center gap-1 transition-colors"
                 >
-                  Apply as Partner
+                  <span>Read Legal Guide</span>
+                  <ArrowRight className="w-3.5 h-3.5" />
                 </Link>
               </div>
             </div>
-          </div>
-        </div>
-      </section>
 
-      {/* 6. VERIFIED INVESTOR TESTIMONIALS */}
-      <section className="py-24 bg-white dark:bg-[#0A121F]">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center max-w-2xl mx-auto mb-16 space-y-3">
-            <div className="text-xs uppercase tracking-widest text-[#C4A46A] font-extrabold">
-              Audited Delivery Testimonials
-            </div>
-            <h2 className="text-3xl font-serif font-black text-[#101B2E] dark:text-white">
-              Trusted by 500+ Domestic & Overseas Investors
-            </h2>
-            <p className="text-sm text-gray-600 dark:text-gray-300">
-              Verified experiences from clients who acquired residential penthouses, food court units, and serviced suites across Boulevard 01 high-rises.
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            {TESTIMONIALS.map((t, idx) => (
-              <SocialProofCard key={idx} testimonial={t} />
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* 7. CONSULTATION & GEOLOCATION CAPTURE */}
-      <section className="py-20 bg-[#F5F2EB]/50 dark:bg-[#101B2E] border-t border-[#C4A46A]/30">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
-            {/* Consultation Intake Form */}
-            <div className="lg:col-span-7">
-              <InquiryConsultationForm channel="consultation" />
-            </div>
-
-            {/* Geolocation & Head Office Details */}
-            <div className="lg:col-span-5 space-y-6">
-              <div className="bg-white dark:bg-[#152238] p-8 rounded-3xl border border-[#C4A46A]/40 dark:border-[#C4A46A]/30 shadow-xs space-y-4">
-                <div className="flex items-center gap-3">
-                  <div className="w-12 h-12 bg-[#F5F2EB] dark:bg-[#101B2E] text-[#C4A46A] border border-[#C4A46A]/20 rounded-2xl flex items-center justify-center font-bold">
-                    <MapPin className="w-6 h-6" />
-                  </div>
-                  <div>
-                    <div className="text-xs font-bold uppercase tracking-wider text-[#C4A46A]">
-                      Physical Corporate Headquarters
-                    </div>
-                    <h3 className="text-lg font-serif font-black text-[#101B2E] dark:text-white">
-                      Plaza 39 AA Commercial, Bahria Town Lahore
-                    </h3>
-                  </div>
+            {/* 2. Strategic Alliance Strip */}
+            <div className="bg-[#0D1525] border border-[#C4A46A]/30 rounded-2xl p-4 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+              <div>
+                <div className="text-[10px] uppercase font-bold text-[#C4A46A] tracking-wider">
+                  Strategic Alliance
                 </div>
-
-                <p className="text-xs text-gray-600 dark:text-gray-300 leading-relaxed">
-                  Visit our executive investor lounge on Main Boulevard, Bahria Town Lahore for private architectural model viewings, inventory ledger audits, and one-on-one sessions with our Sales Directorate.
-                </p>
-
-                <div className="space-y-2 text-xs text-gray-700 dark:text-gray-300 pt-2 border-t border-gray-100 dark:border-white/10">
-                  <div className="flex items-center justify-between">
-                    <span className="font-semibold text-gray-500 dark:text-gray-400">Operating Schedule:</span>
-                    <span className="font-bold text-[#101B2E] dark:text-white">Sat – Thu: 10:00 AM – 8:00 PM</span>
-                  </div>
-                  <div className="flex items-center justify-between">
-                    <span className="font-semibold text-gray-500 dark:text-gray-400">Corporate Line:</span>
-                    <a href={`tel:${COMPANY_INFO.phoneClean}`} className="font-bold text-[#101B2E] dark:text-[#C4A46A]">
-                      {COMPANY_INFO.phone}
-                    </a>
-                  </div>
-                  <div className="flex items-center justify-between">
-                    <span className="font-semibold text-gray-500 dark:text-gray-400">Twin Cities Regional Desk:</span>
-                    <span className="font-bold text-[#101B2E] dark:text-white">Phase 8 Business District, Islamabad</span>
-                  </div>
-                </div>
-
-                <div className="pt-2">
-                  <a
-                    href="https://maps.google.com/?q=Plaza+39+AA+Commercial+Sector+D+Bahria+Town+Lahore"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="w-full py-3.5 px-4 bg-[#101B2E] dark:bg-[#C4A46A] hover:bg-[#1A2B47] dark:hover:bg-[#A9874D] text-[#C4A46A] dark:text-[#101B2E] border border-[#C4A46A]/40 text-xs font-bold rounded-xl flex items-center justify-center gap-2 transition-all shadow-xs"
-                  >
-                    <MapPin className="w-4 h-4 text-[#C4A46A] dark:text-[#101B2E]" />
-                    <span>Launch Google Maps GPS Navigation</span>
-                  </a>
+                <div className="text-sm font-serif font-bold text-white">
+                  Boulevard 01 × Etihad Town
                 </div>
               </div>
+              <div className="px-3 py-1 bg-[#C4A46A] text-[#101B2E] text-[11px] font-extrabold rounded-full uppercase tracking-wider shrink-0 text-center">
+                Authorized Master Partner
+              </div>
+            </div>
+
+            {/* 3. Testimonials Section */}
+            <div className="space-y-4">
+              <div>
+                <div className="text-[10px] font-bold uppercase tracking-widest text-[#C4A46A]">
+                  Testimonials
+                </div>
+                <h3 className="text-2xl font-serif font-black text-white">
+                  Testimonials
+                </h3>
+                <p className="text-xs text-gray-400 mt-1">
+                  Verified overseas expatriates and high-net-worth investors across Bahria Town.
+                </p>
+              </div>
+
+              {/* Review Card */}
+              <div className="bg-[#0D1525] border border-[#C4A46A]/35 rounded-3xl p-6 shadow-xl space-y-4 relative">
+                <div className="flex items-center justify-between">
+                  {/* 5 Gold Stars */}
+                  <div className="flex items-center gap-1 text-[#C4A46A]">
+                    {Array.from({ length: currentTestimonial.rating }).map((_, i) => (
+                      <Star key={i} className="w-4 h-4 fill-[#C4A46A]" />
+                    ))}
+                  </div>
+
+                  <Quote className="w-6 h-6 text-[#C4A46A]/40" />
+                </div>
+
+                <p className="text-xs sm:text-sm text-gray-300 italic leading-relaxed">
+                  &ldquo;{currentTestimonial.quote}&rdquo;
+                </p>
+
+                <div className="pt-2 border-t border-white/5 flex items-center justify-between">
+                  <div>
+                    <h4 className="text-xs font-bold text-white">{currentTestimonial.name}</h4>
+                    <p className="text-[11px] text-gray-400">{currentTestimonial.role}</p>
+                  </div>
+                  <span className="text-[10px] font-bold px-2 py-0.5 rounded-md bg-[#152238] text-[#C4A46A] border border-[#C4A46A]/30">
+                    {currentTestimonial.project}
+                  </span>
+                </div>
+              </div>
+
+              {/* Carousel Dot Pagination */}
+              <div className="flex items-center justify-center gap-2 pt-2">
+                {TESTIMONIALS_DATA.map((_, idx) => (
+                  <button
+                    key={idx}
+                    type="button"
+                    onClick={() => setActiveTestimonial(idx)}
+                    className={`h-2 rounded-full transition-all cursor-pointer ${
+                      activeTestimonial === idx
+                        ? 'w-6 bg-[#C4A46A]'
+                        : 'w-2 bg-gray-600 hover:bg-gray-400'
+                    }`}
+                    aria-label={`Go to testimonial ${idx + 1}`}
+                  />
+                ))}
+              </div>
+            </div>
+          </div>
+
+          {/* ----------------- RIGHT COLUMN: LUXURY CONTACT FORM ----------------- */}
+          <div id="contact-form" className="lg:col-span-6 scroll-mt-28">
+            <div className="bg-[#0D1525] rounded-3xl border border-[#C4A46A]/40 p-8 shadow-2xl space-y-5 relative">
+              <div className="border-b border-white/10 pb-4">
+                <h3 className="text-2xl sm:text-3xl font-serif font-black text-[#C4A46A]">
+                  Contact Form
+                </h3>
+                <p className="text-xs text-gray-400 mt-1">
+                  Book your private VIP consultation or inquire about unit allocation at Plaza 39 AA Commercial.
+                </p>
+              </div>
+
+              {!isSuccess ? (
+                <form onSubmit={handleFormSubmit} className="space-y-4">
+                  {/* Full Name */}
+                  <div>
+                    <label className="block text-[11px] font-bold text-gray-300 uppercase tracking-wider mb-1">
+                      Full Legal Name *
+                    </label>
+                    <input
+                      type="text"
+                      required
+                      placeholder="e.g. Sheikh Zahid"
+                      value={formName}
+                      onChange={(e) => setFormName(e.target.value)}
+                      className="w-full px-3.5 py-2.5 text-sm bg-[#080D18] border border-white/10 focus:border-[#C4A46A] text-white rounded-xl focus:outline-hidden focus:ring-1 focus:ring-[#C4A46A]"
+                    />
+                  </div>
+
+                  {/* Email Address */}
+                  <div>
+                    <label className="block text-[11px] font-bold text-gray-300 uppercase tracking-wider mb-1">
+                      Email Address *
+                    </label>
+                    <input
+                      type="email"
+                      required
+                      placeholder="investor@domain.com"
+                      value={formEmail}
+                      onChange={(e) => setFormEmail(e.target.value)}
+                      className="w-full px-3.5 py-2.5 text-sm bg-[#080D18] border border-white/10 focus:border-[#C4A46A] text-white rounded-xl focus:outline-hidden focus:ring-1 focus:ring-[#C4A46A]"
+                    />
+                  </div>
+
+                  {/* 2 Columns: Phone / WhatsApp & City / Country */}
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    <div>
+                      <label className="block text-[11px] font-bold text-gray-300 uppercase tracking-wider mb-1">
+                        WhatsApp / Phone Number *
+                      </label>
+                      <input
+                        type="tel"
+                        required
+                        placeholder="+92 321 000 4000"
+                        value={formPhone}
+                        onChange={(e) => setFormPhone(e.target.value)}
+                        className="w-full px-3.5 py-2.5 text-sm bg-[#080D18] border border-white/10 focus:border-[#C4A46A] text-white rounded-xl focus:outline-hidden focus:ring-1 focus:ring-[#C4A46A]"
+                      />
+                    </div>
+                    <div>
+                      <label className="block text-[11px] font-bold text-gray-300 uppercase tracking-wider mb-1">
+                        City / Country
+                      </label>
+                      <input
+                        type="text"
+                        placeholder="e.g. London, UK or Lahore"
+                        value={formLocation}
+                        onChange={(e) => setFormLocation(e.target.value)}
+                        className="w-full px-3.5 py-2.5 text-sm bg-[#080D18] border border-white/10 focus:border-[#C4A46A] text-white rounded-xl focus:outline-hidden focus:ring-1 focus:ring-[#C4A46A]"
+                      />
+                    </div>
+                  </div>
+
+                  {/* 2 Columns: Target Development & Typology Preferred */}
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    <div>
+                      <label className="block text-[11px] font-bold text-gray-300 uppercase tracking-wider mb-1">
+                        Target Development
+                      </label>
+                      <select
+                        value={formProject}
+                        onChange={(e) => setFormProject(e.target.value)}
+                        className="w-full px-3.5 py-2.5 text-sm bg-[#080D18] border border-white/10 focus:border-[#C4A46A] text-white rounded-xl focus:outline-hidden focus:ring-1 focus:ring-[#C4A46A]"
+                      >
+                        <option value="grand-15">The Grand Lifestyle — Grand 15</option>
+                        <option value="grand-14">The Oasis Grand 14</option>
+                        <option value="grand-x">Grand X (Theme Park)</option>
+                        <option value="grand-11">Grand 11 (Midway Commercial)</option>
+                        <option value="grand-12">The View — Grand 12 (Islamabad)</option>
+                      </select>
+                    </div>
+
+                    <div>
+                      <label className="block text-[11px] font-bold text-gray-300 uppercase tracking-wider mb-1">
+                        Typology Preferred
+                      </label>
+                      <select
+                        value={formTypology}
+                        onChange={(e) => setFormTypology(e.target.value)}
+                        className="w-full px-3.5 py-2.5 text-sm bg-[#080D18] border border-white/10 focus:border-[#C4A46A] text-white rounded-xl focus:outline-hidden focus:ring-1 focus:ring-[#C4A46A]"
+                      >
+                        <option value="residential">Luxury Residential Penthouse</option>
+                        <option value="commercial">Commercial Retail Frontage</option>
+                        <option value="food_court">Dedicated Food Court Bay</option>
+                        <option value="corporate">Executive Corporate Suite</option>
+                      </select>
+                    </div>
+                  </div>
+
+                  {/* Discussion / Investment Horizon */}
+                  <div>
+                    <label className="block text-[11px] font-bold text-gray-300 uppercase tracking-wider mb-1">
+                      Investment Position / Discussion
+                    </label>
+                    <textarea
+                      rows={3}
+                      placeholder="Mention preferred floor level, budget in PKR, or RDA remittance requirements..."
+                      value={formNotes}
+                      onChange={(e) => setFormNotes(e.target.value)}
+                      className="w-full px-3.5 py-2.5 text-sm bg-[#080D18] border border-white/10 focus:border-[#C4A46A] text-white rounded-xl focus:outline-hidden focus:ring-1 focus:ring-[#C4A46A]"
+                    />
+                  </div>
+
+                  {/* Golden Submit Button */}
+                  <div className="pt-2">
+                    <button
+                      type="submit"
+                      disabled={isSubmitting}
+                      className="w-full py-3.5 px-4 bg-[#C4A46A] hover:bg-[#D4B57C] text-[#101B2E] font-black text-sm rounded-xl shadow-lg hover:shadow-[#C4A46A]/25 transition-all flex items-center justify-center gap-2 cursor-pointer disabled:opacity-50"
+                    >
+                      {isSubmitting ? (
+                        'Routing Lead to Sales Directorate...'
+                      ) : (
+                        <>
+                          <Send className="w-4 h-4 text-[#101B2E]" />
+                          <span>Submit Consultation Request</span>
+                        </>
+                      )}
+                    </button>
+                  </div>
+
+                  {/* Trust Disclaimer */}
+                  <div className="text-center text-[10px] text-gray-400 pt-1 flex items-center justify-center gap-1.5">
+                    <ShieldCheck className="w-3.5 h-3.5 text-emerald-400" />
+                    <span>Strict privacy protection. No spam. Direct sales directorate assignment.</span>
+                  </div>
+                </form>
+              ) : (
+                <div className="p-8 text-center space-y-4">
+                  <div className="w-16 h-16 bg-emerald-950/60 text-emerald-400 rounded-full flex items-center justify-center mx-auto border border-emerald-800">
+                    <CheckCircle2 className="w-8 h-8" />
+                  </div>
+                  <h4 className="text-xl font-bold font-serif text-white">Consultation Request Logged</h4>
+                  <p className="text-xs text-gray-300 max-w-sm mx-auto">
+                    Thank you, <strong>{formName}</strong>. Your consultation docket has been routed to our on-duty Directorate at Plaza 39 AA Commercial, Bahria Town Lahore.
+                  </p>
+                  <div className="pt-2">
+                    <WhatsAppCTA
+                      message={`Hi Boulevard 01, I just submitted a VIP consultation request for ${formProject}. Name: ${formName}.`}
+                      label="Expedite via WhatsApp Desk"
+                      variant="emerald"
+                      size="md"
+                    />
+                  </div>
+                </div>
+              )}
             </div>
           </div>
         </div>

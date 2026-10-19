@@ -292,24 +292,24 @@ export const NavigationHeader: React.FC = () => {
               <span className="hidden xl:inline">{COMPANY_INFO.phone}</span>
             </a>
 
-            {/* Standout VIP WhatsApp Consultation CTA */}
-            <WhatsAppCTA
-              message="Hello Boulevard 01, I would like to book a private VIP consultation regarding active high-rise towers in Bahria Town."
-              label="VIP Consultation"
-              size="sm"
-              variant="emerald"
-            />
+            {/* Standout Luxury Get Consultation CTA Button */}
+            <Link
+              href="/#contact-form"
+              className="px-4 py-2 text-xs font-extrabold uppercase tracking-wider bg-[#C4A46A] hover:bg-[#D4B57C] text-[#101B2E] rounded-xl shadow-md hover:shadow-[#C4A46A]/20 transition-all flex items-center gap-1.5 cursor-pointer"
+            >
+              <span>Get Consultation</span>
+            </Link>
           </div>
 
           {/* Mobile Menu Action Triggers */}
           <div className="flex lg:hidden items-center gap-2">
             <ThemeToggle />
-            <WhatsAppCTA
-              message="Hello Boulevard 01, I would like to inquire about project availability."
-              label="Advisory"
-              size="sm"
-              variant="emerald"
-            />
+            <Link
+              href="/#contact-form"
+              className="px-3 py-1.5 text-xs font-bold uppercase tracking-wider bg-[#C4A46A] text-[#101B2E] rounded-lg shadow-sm"
+            >
+              Consult
+            </Link>
             <button
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
               className="p-2 text-gray-200 hover:text-white rounded-xl hover:bg-white/10 border border-white/10 transition-colors"
