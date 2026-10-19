@@ -18,12 +18,13 @@ import {
   TreePine,
   Baby,
   MessageCircle,
+  UserCheck,
 } from 'lucide-react';
 import { PROJECTS } from '@/data/projects';
 import { COMPANY_INFO, formatPKR } from '@/data/constants';
 import { WhatsAppCTA } from '@/components/atoms/WhatsAppCTA';
 import { Logo } from '@/components/atoms/Logo';
-import { Animated3DBackground } from '@/components/atoms/Animated3DBackground';
+import { SalesFunnelRouter } from '@/components/organisms/SalesFunnelRouter';
 
 const TESTIMONIALS_DATA = [
   {
@@ -40,45 +41,41 @@ const TESTIMONIALS_DATA = [
     project: 'The Grand Lifestyle — Grand 15',
     rating: 5,
     quote:
-      'Securing off-plan units with clear milestone escrow clearance gave us immense peace of mind. The team at Plaza 39 handled all consular documentation seamlessly.',
+      'I reserved a 2-bed duplex facing the Eiffel Tower replica through their WhatsApp desk while in Manchester. The contract arrived within 48 hours with direct consular validation and bank-attested schedules.',
   },
   {
-    name: 'Chaudhry Salman Naveed',
-    role: 'Commercial Retail Landlord (Lahore)',
-    project: 'Grand X (Bahria Theme Park)',
+    name: 'Chaudhry Kamran Akram',
+    role: 'Commercial Retail Investor (Lahore)',
+    project: 'Grand X — Retail & Theme Park Carnival',
     rating: 5,
     quote:
-      'Securing a double-frontage food court outlet in Grand X directly facing the Theme Park was the best decision for my commercial portfolio. Construction speed outpaces any other builder.',
-  },
-  {
-    name: 'Dr. Sarah Farooq',
-    role: 'Serviced Residence Owner (Dubai, UAE)',
-    project: 'The Oasis Grand 14',
-    rating: 5,
-    quote:
-      'The managed rental pool at Grand 14 has generated steady foreign-exchange indexed yields without me needing to manage tenants. Professionalism at every stage.',
+      'Grand X delivers unmatchable footfall being positioned right next to the Theme Park. The Boulevard 01 commercial sales desk structured our brand lease agreement before grey structure completion.',
   },
 ];
 
-const AMENITIES_DATA = [
+const AMENITIES_SHOWCASE = [
   {
+    id: 'spa',
     title: 'Spa & Wellness Sanctuary',
-    description: 'Hydrotherapy suites, Turkish hammam, sauna, and dedicated private relaxation treatment rooms.',
+    desc: 'Hydrotherapy suites, Turkish hammam, sauna, and dedicated private relaxation treatment rooms.',
     icon: Flame,
   },
   {
+    id: 'daycare',
     title: 'Daycare & Early Learning Center',
-    description: 'Certified Montessori educators, monitored playscapes, and secure biometric child check-in protocols.',
+    desc: 'Certified Montessori educators, monitored playscapes, and secure biometric child check-in protocols.',
     icon: Baby,
   },
   {
+    id: 'gaming',
     title: 'Next-Gen Gaming Suite',
-    description: 'VR simulators, e-sports stations, high-bandwidth gaming rigs, and immersive cinematic pods.',
+    desc: 'VR simulators, e-sports stations, high-bandwidth gaming rigs, and immersive cinematic pods.',
     icon: Gamepad2,
   },
   {
+    id: 'gardens',
     title: 'Landscaped Sky Gardens',
-    description: 'Panoramic observation decks, rooftop running tracks, open-air pergolas, and sunset contemplation lounges.',
+    desc: 'Panoramic observation decks, rooftop running tracks, open-air pergolas, and sunset contemplation lounges.',
     icon: TreePine,
   },
 ];
@@ -97,6 +94,22 @@ export default function HomePage() {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
 
+  // Dynamic Specialist Assignment calculation
+  const getAssignedSpecialist = (project: string, typology: string) => {
+    if (project === 'grand-12') {
+      return { name: 'Ali Hamza', role: 'Regional Director Islamabad', desk: 'Islamabad Regional Office' };
+    }
+    if (typology === 'commercial' || typology === 'food_court' || project === 'grand-x') {
+      return { name: 'Naeem Ahsan', role: 'Director Sales & Commercial Strategy', desk: 'Commercial Strategy Desk' };
+    }
+    if (typology === 'corporate' || project === 'grand-11') {
+      return { name: 'Sheikh Zahid', role: 'Director Corporate Relations', desk: 'Corporate Relations Desk' };
+    }
+    return { name: 'Waqas Ayub', role: 'Senior Vice President Sales', desk: 'Residential Advisory Desk' };
+  };
+
+  const assignedAdvisor = getAssignedSpecialist(formProject, formTypology);
+
   const handleFormSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
@@ -112,7 +125,9 @@ export default function HomePage() {
           inquiry_channel: 'homepage_contact_form',
           project_interest: formProject,
           unit_interest_type: formTypology,
-          inquiry_notes: `Location: ${formLocation || 'N/A'}. Notes: ${formNotes}`,
+          inquiry_notes: `Assigned Specialist: ${assignedAdvisor.name} (${assignedAdvisor.role}). Location: ${
+            formLocation || 'N/A'
+          }. Notes: ${formNotes}`,
         }),
       });
       setIsSuccess(true);
@@ -126,17 +141,13 @@ export default function HomePage() {
   const currentTestimonial = TESTIMONIALS_DATA[activeTestimonial];
 
   return (
-    <div className="flex flex-col min-h-screen bg-[#0A101D] text-white overflow-hidden">
+    <div className="flex flex-col min-h-screen text-white overflow-hidden relative">
       {/* =========================================================================
-          1. HERO SECTION WITH ANIMATED 3D GOLDEN RIBBON BACKGROUND
+          1. HERO SECTION WITH GLOBAL 3D CANVAS LIVING BEHIND
           ========================================================================= */}
-      <section className="relative min-h-[680px] lg:min-h-[760px] flex items-center justify-center overflow-hidden py-16 sm:py-20 px-4 sm:px-6 lg:px-8">
-        {/* Animated 3D Silk Ribbons Canvas */}
-        <Animated3DBackground intensity={1.15} />
-
+      <section className="relative min-h-[640px] lg:min-h-[720px] flex items-center justify-center overflow-hidden py-16 sm:py-20 px-4 sm:px-6 lg:px-8 z-10">
         {/* Subtle Vignettes & Architectural Texture */}
-        <div className="absolute inset-0 bg-radial from-transparent via-[#0A101D]/50 to-[#0A101D] pointer-events-none z-1" />
-        <div className="absolute inset-0 bg-gradient-to-b from-[#101B2E]/60 via-transparent to-[#0A101D] pointer-events-none z-1" />
+        <div className="absolute inset-0 bg-radial from-transparent via-[#0A101D]/40 to-[#0A101D]/80 pointer-events-none -z-1" />
 
         <div className="relative z-10 max-w-5xl mx-auto text-center space-y-8 animate-in fade-in duration-700">
           {/* Brand Logo Presentation */}
@@ -145,7 +156,7 @@ export default function HomePage() {
           </div>
 
           {/* Historical Performance Verification Badge */}
-          <div className="inline-flex items-center gap-2 px-5 py-2 rounded-full bg-[#152238]/85 backdrop-blur-md border border-[#C4A46A]/50 text-xs font-bold text-[#C4A46A] shadow-lg shadow-black/40">
+          <div className="inline-flex items-center gap-2 px-5 py-2 rounded-full glass-pill text-xs font-bold text-[#C4A46A] shadow-lg shadow-black/40">
             <Award className="w-4 h-4 text-[#C4A46A]" />
             <span>9+ Years Audited Track Record • 15 Towers • 500+ Delivered Units</span>
           </div>
@@ -153,7 +164,7 @@ export default function HomePage() {
           {/* Master Headline with Metallic Golden Shimmer */}
           <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-serif font-black tracking-tight text-white leading-tight">
             Institutional High-Rise <br />
-            <span className="bg-gradient-to-r from-[#F5E6CA] via-[#C4A46A] to-[#E5C98E] bg-clip-text text-transparent block mt-1">
+            <span className="gold-gradient-text block mt-1">
               Excellence in Bahria Town
             </span>
           </h1>
@@ -163,21 +174,30 @@ export default function HomePage() {
             Eliminating off-plan uncertainty with verified construction milestones. Explore prime residential penthouses, food court bays, and corporate suites across Bahria Town Lahore and Islamabad.
           </p>
 
-          {/* 3 Conversion CTA Buttons in a Row (Mockup Style) */}
-          <div className="pt-2 flex flex-col sm:flex-row items-center justify-center gap-4 max-w-lg mx-auto sm:max-w-none">
+          {/* Conversion CTA Action Array */}
+          <div className="pt-2 flex flex-col sm:flex-row items-center justify-center gap-3.5 max-w-2xl mx-auto">
             {/* Primary Gold Button */}
             <Link
               href="/inventory"
-              className="w-full sm:w-auto px-8 py-3.5 bg-[#C4A46A] hover:bg-[#D4B57C] text-[#101B2E] font-extrabold text-sm rounded-xl shadow-lg hover:shadow-[#C4A46A]/25 transition-all flex items-center justify-center gap-2 group cursor-pointer"
+              className="w-full sm:w-auto px-7 py-3.5 bg-[#C4A46A] hover:bg-[#D4B57C] text-[#101B2E] font-extrabold text-sm rounded-xl shadow-lg hover:shadow-[#C4A46A]/25 transition-all flex items-center justify-center gap-2 group cursor-pointer"
             >
               <span>Explore Live Inventory</span>
               <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
             </Link>
 
+            {/* Interactive Sales Funnel Anchor Button */}
+            <a
+              href="#sales-funnel"
+              className="w-full sm:w-auto px-6 py-3.5 glass-panel glass-panel-hover text-white font-bold text-sm rounded-xl border border-[#C4A46A]/50 transition-all flex items-center justify-center gap-2 cursor-pointer"
+            >
+              <Sparkles className="w-4 h-4 text-[#C4A46A]" />
+              <span>Sales Funnel & Advisors</span>
+            </a>
+
             {/* Secondary Glassmorphic Button */}
             <Link
               href="/compare"
-              className="w-full sm:w-auto px-7 py-3.5 bg-white/5 hover:bg-white/10 text-white font-bold text-sm rounded-xl border border-[#C4A46A]/50 backdrop-blur-xs transition-all text-center"
+              className="w-full sm:w-auto px-6 py-3.5 bg-white/5 hover:bg-white/10 text-white font-bold text-sm rounded-xl border border-[#C4A46A]/40 backdrop-blur-xs transition-all text-center"
             >
               Compare 5 Active Towers
             </Link>
@@ -187,15 +207,15 @@ export default function HomePage() {
               href={`https://wa.me/${COMPANY_INFO.phoneClean}?text=Hello%20Boulevard%2001,%20I%20would%20like%20to%20inquire%20about%20active%20tower%20inventory.`}
               target="_blank"
               rel="noopener noreferrer"
-              className="w-full sm:w-auto px-7 py-3.5 bg-[#152238]/90 hover:bg-[#1A2B47] text-white font-bold text-sm rounded-xl border border-[#C4A46A]/40 hover:border-[#25D366] transition-all flex items-center justify-center gap-2"
+              className="w-full sm:w-auto px-6 py-3.5 bg-[#152238]/90 hover:bg-[#1A2B47] text-white font-bold text-sm rounded-xl border border-[#C4A46A]/40 hover:border-[#25D366] transition-all flex items-center justify-center gap-2"
             >
               <MessageCircle className="w-4 h-4 text-[#25D366]" />
-              <span>Instant WhatsApp Chat</span>
+              <span>Instant WhatsApp</span>
             </a>
           </div>
 
           {/* SBP & Geolocation Trust Seals */}
-          <div className="pt-8 flex flex-wrap items-center justify-center gap-6 text-xs text-gray-400">
+          <div className="pt-6 flex flex-wrap items-center justify-center gap-6 text-xs text-gray-400">
             <div className="flex items-center gap-1.5">
               <ShieldCheck className="w-4 h-4 text-emerald-400" />
               <span>State Bank RDA Remittance Compliant</span>
@@ -213,9 +233,14 @@ export default function HomePage() {
       </section>
 
       {/* =========================================================================
-          2. SECTION: CURATED HIGH-RISE DEVELOPMENTS
+          2. SECTION: INTERACTIVE SALES FUNNEL & DEDICATED SPECIALIST ALLOCATION
           ========================================================================= */}
-      <section className="py-24 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto w-full">
+      <SalesFunnelRouter />
+
+      {/* =========================================================================
+          3. SECTION: CURATED HIGH-RISE DEVELOPMENTS
+          ========================================================================= */}
+      <section className="py-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto w-full relative z-10">
         {/* Section Header */}
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12">
           <div>
@@ -239,12 +264,12 @@ export default function HomePage() {
           </Link>
         </div>
 
-        {/* Project Cards Grid matching Mockup */}
+        {/* Project Cards Grid with Glassmorphic Panels */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {PROJECTS.slice(0, 3).map((project) => (
             <div
               key={project.id}
-              className="bg-[#0D1525] rounded-3xl border border-[#C4A46A]/30 hover:border-[#C4A46A] hover:shadow-2xl hover:shadow-black/60 transition-all duration-300 flex flex-col justify-between overflow-hidden group"
+              className="glass-panel glass-panel-hover rounded-3xl flex flex-col justify-between overflow-hidden group"
             >
               <div>
                 {/* Image Cover with Badges */}
@@ -254,7 +279,7 @@ export default function HomePage() {
                     alt={project.title}
                     className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-[#0D1525] via-transparent to-black/30" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-[#0A1220] via-transparent to-black/30" />
 
                   {/* Top Left Flagship Badge */}
                   <div className="absolute top-3 left-3 bg-[#C4A46A] text-[#101B2E] text-[10px] font-extrabold px-3 py-1 rounded-full uppercase tracking-wider shadow-md">
@@ -262,7 +287,7 @@ export default function HomePage() {
                   </div>
 
                   {/* Top Right Status Badge */}
-                  <div className="absolute top-3 right-3 bg-[#0A121F]/80 backdrop-blur-xs text-[#C4A46A] border border-[#C4A46A]/40 text-[9px] font-bold px-2.5 py-1 rounded-md uppercase tracking-wider">
+                  <div className="absolute top-3 right-3 bg-[#0A121F]/90 backdrop-blur-xs text-[#C4A46A] border border-[#C4A46A]/40 text-[9px] font-bold px-2.5 py-1 rounded-md uppercase tracking-wider">
                     {project.status_badge}
                   </div>
 
@@ -284,7 +309,7 @@ export default function HomePage() {
                   </p>
 
                   {/* Structured Spec Box */}
-                  <div className="grid grid-cols-2 gap-3 py-3 px-3.5 bg-[#121B2C] rounded-2xl border border-white/5 text-xs">
+                  <div className="grid grid-cols-2 gap-3 py-3 px-3.5 bg-[#0B1220]/80 rounded-2xl border border-white/5 text-xs">
                     <div>
                       <span className="text-gray-400 block text-[10px] uppercase font-bold">Scale</span>
                       <span className="font-bold text-white">{project.floor_count}</span>
@@ -309,7 +334,7 @@ export default function HomePage() {
               <div className="p-6 pt-0 flex items-center gap-2">
                 <Link
                   href={`/projects/${project.slug}`}
-                  className="flex-1 py-2.5 px-3 bg-[#1A2840] hover:bg-[#C4A46A] text-[#C4A46A] hover:text-[#101B2E] border border-[#C4A46A]/40 text-xs font-bold rounded-xl text-center transition-all flex items-center justify-center gap-1.5"
+                  className="flex-1 py-2.5 px-3 bg-[#1A2840]/90 hover:bg-[#C4A46A] text-[#C4A46A] hover:text-[#101B2E] border border-[#C4A46A]/40 text-xs font-bold rounded-xl text-center transition-all flex items-center justify-center gap-1.5"
                 >
                   <span>View Specifications</span>
                   <ArrowRight className="w-3.5 h-3.5" />
@@ -328,43 +353,47 @@ export default function HomePage() {
       </section>
 
       {/* =========================================================================
-          3. SECTION: LIFESTYLE & LIVING AMENITIES
+          4. SECTION: LIFESTYLE & LIVING AMENITIES
           ========================================================================= */}
-      <section className="py-24 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto w-full relative">
-        {/* Decorative Gold Hairline Divider */}
-        <div className="h-[1px] w-full bg-gradient-to-r from-transparent via-[#C4A46A]/50 to-transparent mb-16" />
-
-        <div className="text-center max-w-3xl mx-auto mb-16 space-y-3">
-          <div className="inline-flex items-center gap-2 text-[10px] uppercase tracking-widest text-[#C4A46A] font-extrabold">
+      <section className="py-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto w-full relative z-10">
+        {/* Subtle Section Divider */}
+        <div className="flex items-center justify-center gap-4 mb-6">
+          <div className="h-[1px] w-16 bg-gradient-to-r from-transparent to-[#C4A46A]/40" />
+          <div className="text-[10px] uppercase tracking-widest text-[#C4A46A] font-extrabold flex items-center gap-1.5">
             <Sparkles className="w-3.5 h-3.5" />
             <span>Lifestyle & Living Amenities</span>
           </div>
-          <h2 className="text-3xl sm:text-4xl font-serif font-black text-white">
-            Amenities
-          </h2>
-          <p className="text-xs sm:text-sm text-gray-400 leading-relaxed max-w-2xl mx-auto">
-            Institutional-grade resident facilities managed by in-house hospitality and property maintenance teams across every active high-rise tower.
-          </p>
+          <div className="h-[1px] w-16 bg-gradient-to-l from-transparent to-[#C4A46A]/40" />
         </div>
 
-        {/* 4 Luxury Amenity Cards */}
+        {/* Title */}
+        <h2 className="text-3xl md:text-4xl font-serif font-black text-center text-white mb-2">
+          Amenities
+        </h2>
+        <p className="text-xs sm:text-sm text-gray-400 text-center max-w-xl mx-auto mb-12">
+          Institutional-grade resident facilities managed by in-house hospitality and property maintenance teams across every active high-rise tower.
+        </p>
+
+        {/* 4 Amenities Cards */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-          {AMENITIES_DATA.map((amenity, idx) => {
+          {AMENITIES_SHOWCASE.map((amenity) => {
             const Icon = amenity.icon;
             return (
               <div
-                key={idx}
-                className="bg-[#0D1525] border border-[#C4A46A]/30 hover:border-[#C4A46A] rounded-3xl p-6 hover:shadow-xl transition-all duration-300 space-y-4 group"
+                key={amenity.id}
+                className="glass-panel glass-panel-hover rounded-3xl p-6 text-left space-y-4"
               >
-                <div className="w-12 h-12 rounded-2xl bg-[#152238] border border-[#C4A46A]/30 flex items-center justify-center text-[#C4A46A] group-hover:scale-110 transition-transform">
-                  <Icon className="w-6 h-6 text-[#C4A46A]" />
+                <div className="w-12 h-12 rounded-2xl bg-white/5 border border-[#C4A46A]/40 flex items-center justify-center text-[#C4A46A]">
+                  <Icon className="w-5 h-5" />
                 </div>
-                <h3 className="text-base font-serif font-bold text-white">
-                  {amenity.title}
-                </h3>
-                <p className="text-xs text-gray-400 leading-relaxed">
-                  {amenity.description}
-                </p>
+                <div>
+                  <h3 className="text-sm font-serif font-bold text-white mb-1.5">
+                    {amenity.title}
+                  </h3>
+                  <p className="text-xs text-gray-400 leading-relaxed">
+                    {amenity.desc}
+                  </p>
+                </div>
               </div>
             );
           })}
@@ -372,14 +401,14 @@ export default function HomePage() {
       </section>
 
       {/* =========================================================================
-          4. DUAL COLUMN SECTION (ROSHAN DIGITAL + TESTIMONIALS + CONTACT FORM)
+          5. DUAL COLUMN SECTION (ROSHAN DIGITAL + TESTIMONIALS + CONTACT FORM)
           ========================================================================= */}
-      <section className="py-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto w-full">
+      <section className="py-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto w-full relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-start">
           {/* ----------------- LEFT COLUMN: ROSHAN DIGITAL & TESTIMONIALS ----------------- */}
           <div className="lg:col-span-6 space-y-8">
             {/* 1. Roshan Digital Card */}
-            <div className="bg-[#0E1726] border border-[#C4A46A]/40 rounded-3xl p-8 shadow-2xl space-y-4 relative overflow-hidden group">
+            <div className="glass-panel glass-panel-hover rounded-3xl p-8 space-y-4 relative overflow-hidden group">
               <div className="absolute top-0 right-0 w-32 h-32 bg-[#C4A46A]/10 rounded-full blur-2xl pointer-events-none" />
 
               <div className="text-[10px] font-bold uppercase tracking-widest text-[#C4A46A]">
@@ -408,7 +437,7 @@ export default function HomePage() {
             </div>
 
             {/* 2. Strategic Alliance Strip */}
-            <div className="bg-[#0D1525] border border-[#C4A46A]/30 rounded-2xl p-4 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+            <div className="glass-panel rounded-2xl p-4 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
               <div>
                 <div className="text-[10px] uppercase font-bold text-[#C4A46A] tracking-wider">
                   Strategic Alliance
@@ -437,7 +466,7 @@ export default function HomePage() {
               </div>
 
               {/* Review Card */}
-              <div className="bg-[#0D1525] border border-[#C4A46A]/35 rounded-3xl p-6 shadow-xl space-y-4 relative">
+              <div className="glass-panel rounded-3xl p-6 space-y-4 relative">
                 <div className="flex items-center justify-between">
                   {/* 5 Gold Stars */}
                   <div className="flex items-center gap-1 text-[#C4A46A]">
@@ -455,47 +484,78 @@ export default function HomePage() {
 
                 <div className="pt-2 border-t border-white/5 flex items-center justify-between">
                   <div>
-                    <h4 className="text-xs font-bold text-white">{currentTestimonial.name}</h4>
-                    <p className="text-[11px] text-gray-400">{currentTestimonial.role}</p>
+                    <div className="text-xs font-bold text-white">{currentTestimonial.name}</div>
+                    <div className="text-[11px] text-[#C4A46A]">{currentTestimonial.role}</div>
                   </div>
-                  <span className="text-[10px] font-bold px-2 py-0.5 rounded-md bg-[#152238] text-[#C4A46A] border border-[#C4A46A]/30">
-                    {currentTestimonial.project}
-                  </span>
-                </div>
-              </div>
 
-              {/* Carousel Dot Pagination */}
-              <div className="flex items-center justify-center gap-2 pt-2">
-                {TESTIMONIALS_DATA.map((_, idx) => (
-                  <button
-                    key={idx}
-                    type="button"
-                    onClick={() => setActiveTestimonial(idx)}
-                    className={`h-2 rounded-full transition-all cursor-pointer ${
-                      activeTestimonial === idx
-                        ? 'w-6 bg-[#C4A46A]'
-                        : 'w-2 bg-gray-600 hover:bg-gray-400'
-                    }`}
-                    aria-label={`Go to testimonial ${idx + 1}`}
-                  />
-                ))}
+                  {/* Carousel Dots */}
+                  <div className="flex items-center gap-1.5">
+                    {TESTIMONIALS_DATA.map((_, idx) => (
+                      <button
+                        key={idx}
+                        onClick={() => setActiveTestimonial(idx)}
+                        aria-label={`Go to testimonial ${idx + 1}`}
+                        className={`h-2 rounded-full transition-all cursor-pointer ${
+                          activeTestimonial === idx ? 'w-6 bg-[#C4A46A]' : 'w-2 bg-white/20 hover:bg-white/40'
+                        }`}
+                      />
+                    ))}
+                  </div>
+                </div>
               </div>
             </div>
           </div>
 
-          {/* ----------------- RIGHT COLUMN: LUXURY CONTACT FORM ----------------- */}
-          <div id="contact-form" className="lg:col-span-6 scroll-mt-28">
-            <div className="bg-[#0D1525] rounded-3xl border border-[#C4A46A]/40 p-8 shadow-2xl space-y-5 relative">
-              <div className="border-b border-white/10 pb-4">
-                <h3 className="text-2xl sm:text-3xl font-serif font-black text-[#C4A46A]">
-                  Contact Form
-                </h3>
+          {/* ----------------- RIGHT COLUMN: LUXURY VIP CONTACT FORM ----------------- */}
+          <div id="contact-form" className="lg:col-span-6">
+            <div className="glass-panel rounded-3xl p-8 space-y-6 relative overflow-hidden">
+              <div className="absolute top-0 right-0 w-40 h-40 bg-[#C4A46A]/10 rounded-full blur-3xl pointer-events-none" />
+
+              <div>
+                <div className="flex items-center justify-between">
+                  <h3 className="text-2xl font-serif font-black text-white">Contact Form</h3>
+                  <div className="flex items-center gap-1.5 text-[11px] text-emerald-400 font-semibold bg-emerald-950/40 px-2.5 py-1 rounded-full border border-emerald-500/30">
+                    <UserCheck className="w-3 h-3" />
+                    <span>Direct Desk Routing</span>
+                  </div>
+                </div>
                 <p className="text-xs text-gray-400 mt-1">
                   Book your private VIP consultation or inquire about unit allocation at Plaza 39 AA Commercial.
                 </p>
               </div>
 
-              {!isSuccess ? (
+              {/* Dynamic Specialist Assignment Notification */}
+              <div className="p-3 rounded-xl bg-[#0A101D]/90 border border-[#C4A46A]/30 flex items-center gap-3">
+                <div className="w-9 h-9 rounded-lg bg-[#C4A46A]/20 flex items-center justify-center text-[#C4A46A] shrink-0 font-bold text-xs">
+                  VIP
+                </div>
+                <div className="flex-1 text-xs">
+                  <div className="text-gray-400 text-[10px] uppercase font-bold">Assigned Senior Lead</div>
+                  <div className="text-white font-bold">{assignedAdvisor.name} <span className="text-gray-400 font-normal">({assignedAdvisor.role})</span></div>
+                  <div className="text-[10px] text-[#C4A46A]">{assignedAdvisor.desk}</div>
+                </div>
+              </div>
+
+              {isSuccess ? (
+                <div className="p-8 text-center space-y-4">
+                  <div className="w-16 h-16 bg-emerald-950/60 text-emerald-400 rounded-full flex items-center justify-center mx-auto border border-emerald-800">
+                    <CheckCircle2 className="w-8 h-8" />
+                  </div>
+                  <h4 className="text-xl font-bold font-serif text-white">Consultation Request Logged</h4>
+                  <p className="text-xs text-gray-300 max-w-sm mx-auto">
+                    Thank you, <strong>{formName}</strong>. Your consultation docket has been assigned directly to{' '}
+                    <strong>{assignedAdvisor.name}</strong> at Plaza 39 AA Commercial, Bahria Town Lahore.
+                  </p>
+                  <div className="pt-2">
+                    <WhatsAppCTA
+                      message={`Hi ${assignedAdvisor.name}, I just submitted a VIP consultation request for ${formProject}. Name: ${formName}.`}
+                      label="Expedite via WhatsApp Desk"
+                      variant="emerald"
+                      size="md"
+                    />
+                  </div>
+                </div>
+              ) : (
                 <form onSubmit={handleFormSubmit} className="space-y-4">
                   {/* Full Name */}
                   <div>
@@ -618,7 +678,7 @@ export default function HomePage() {
                       ) : (
                         <>
                           <Send className="w-4 h-4 text-[#101B2E]" />
-                          <span>Submit Consultation Request</span>
+                          <span>Dispatch to {assignedAdvisor.name}</span>
                         </>
                       )}
                     </button>
@@ -627,27 +687,9 @@ export default function HomePage() {
                   {/* Trust Disclaimer */}
                   <div className="text-center text-[10px] text-gray-400 pt-1 flex items-center justify-center gap-1.5">
                     <ShieldCheck className="w-3.5 h-3.5 text-emerald-400" />
-                    <span>Strict privacy protection. No spam. Direct sales directorate assignment.</span>
+                    <span>Direct sales directorate assignment • Plaza 39 AA Commercial</span>
                   </div>
                 </form>
-              ) : (
-                <div className="p-8 text-center space-y-4">
-                  <div className="w-16 h-16 bg-emerald-950/60 text-emerald-400 rounded-full flex items-center justify-center mx-auto border border-emerald-800">
-                    <CheckCircle2 className="w-8 h-8" />
-                  </div>
-                  <h4 className="text-xl font-bold font-serif text-white">Consultation Request Logged</h4>
-                  <p className="text-xs text-gray-300 max-w-sm mx-auto">
-                    Thank you, <strong>{formName}</strong>. Your consultation docket has been routed to our on-duty Directorate at Plaza 39 AA Commercial, Bahria Town Lahore.
-                  </p>
-                  <div className="pt-2">
-                    <WhatsAppCTA
-                      message={`Hi Boulevard 01, I just submitted a VIP consultation request for ${formProject}. Name: ${formName}.`}
-                      label="Expedite via WhatsApp Desk"
-                      variant="emerald"
-                      size="md"
-                    />
-                  </div>
-                </div>
               )}
             </div>
           </div>

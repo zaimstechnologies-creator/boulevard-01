@@ -169,6 +169,17 @@ export const NavigationHeader: React.FC = () => {
               )}
             </Link>
 
+            {/* 3. Sales Funnel & Advisor Matching */}
+            <Link
+              href="/#sales-funnel"
+              className="relative py-2 flex items-center gap-1.5 transition-colors hover:text-[#C4A46A] text-gray-200"
+            >
+              <span>Sales Funnel</span>
+              <span className="text-[9px] font-extrabold px-1.5 py-0.2 rounded-md bg-[#C4A46A]/20 text-[#C4A46A] border border-[#C4A46A]/40 uppercase tracking-wider">
+                Advisors
+              </span>
+            </Link>
+
             {/* 3. Parametric Compare */}
             <Link
               href="/compare"
@@ -355,6 +366,16 @@ export const NavigationHeader: React.FC = () => {
                 <span>Live Inventory Sheet</span>
               </div>
               <span className="text-[10px] uppercase font-bold text-emerald-400">Real-Time</span>
+            </Link>
+            <Link
+              href="/#sales-funnel"
+              onClick={() => setMobileMenuOpen(false)}
+              className="flex items-center justify-between px-3 py-2.5 rounded-xl text-sm font-semibold text-[#F5E6CA] bg-[#C4A46A]/10 border border-[#C4A46A]/30 hover:bg-[#152238] transition-colors"
+            >
+              <span>Investor Sales Funnel</span>
+              <span className="text-[10px] font-extrabold px-2 py-0.5 rounded-full bg-[#C4A46A] text-[#101B2E]">
+                Dedicated Advisors
+              </span>
             </Link>
             <Link
               href="/compare"

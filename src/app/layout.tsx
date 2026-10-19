@@ -5,6 +5,7 @@ import { Footer } from '@/components/organisms/Footer';
 import { COMPANY_INFO } from '@/data/constants';
 import { generateOrganizationSchema } from '@/lib/seo';
 import { WhatsAppCTA } from '@/components/atoms/WhatsAppCTA';
+import { Animated3DBackground } from '@/components/atoms/Animated3DBackground';
 
 export const metadata: Metadata = {
   metadataBase: new URL(COMPANY_INFO.websiteUrl),
@@ -107,7 +108,9 @@ export default function RootLayout({
           dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationSchema) }}
         />
       </head>
-      <body className="min-h-full flex flex-col bg-white dark:bg-[#101B2E] text-[#101B2E] dark:text-[#F5F2EB] selection:bg-[#C4A46A] selection:text-[#101B2E] transition-colors duration-300">
+      <body className="min-h-full flex flex-col bg-[#0A101D] text-[#101B2E] dark:text-[#F5F2EB] selection:bg-[#C4A46A] selection:text-[#101B2E] transition-colors duration-300 relative">
+        {/* Global 3D Interactive Canvas Background (Scroll & Mouse Parallax) */}
+        <Animated3DBackground fixed intensity={1.1} />
         <NavigationHeader />
         <main className="flex-1">{children}</main>
         <Footer />
