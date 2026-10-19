@@ -147,8 +147,8 @@ export default function HomePage() {
           1. HERO SECTION WITH GLOBAL 3D CANVAS LIVING BEHIND
           ========================================================================= */}
       <section id="hero-section" className="relative min-h-[640px] lg:min-h-[720px] flex items-center justify-center overflow-hidden py-16 sm:py-20 px-4 sm:px-6 lg:px-8 z-10">
-        {/* Subtle Vignettes & Architectural Texture */}
-        <div className="absolute inset-0 bg-radial from-transparent via-[#0A101D]/40 to-[#0A101D]/80 pointer-events-none -z-1" />
+        {/* Subtle Edge Glow */}
+        <div className="absolute inset-0 bg-radial from-transparent via-transparent to-[#0A101D]/15 pointer-events-none -z-1" />
 
         <div className="relative z-10 max-w-5xl mx-auto text-center space-y-8 animate-in fade-in duration-700">
           {/* Brand Logo Presentation */}
@@ -163,15 +163,15 @@ export default function HomePage() {
           </div>
 
           {/* Master Headline with Metallic Golden Shimmer */}
-          <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-serif font-black tracking-tight text-white leading-tight">
+          <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-serif font-black tracking-tight text-white leading-tight drop-shadow-[0_4px_20px_rgba(0,0,0,0.9)]">
             Institutional High-Rise <br />
-            <span className="gold-gradient-text block mt-1">
+            <span className="gold-gradient-text block mt-1 drop-shadow-[0_4px_16px_rgba(0,0,0,0.8)]">
               Excellence in Bahria Town
             </span>
           </h1>
 
           {/* Editorial Subtitle */}
-          <p className="text-sm sm:text-base md:text-lg text-gray-300 max-w-3xl mx-auto font-normal leading-relaxed">
+          <p className="text-sm sm:text-base md:text-lg text-white max-w-3xl mx-auto font-medium leading-relaxed drop-shadow-[0_2px_12px_rgba(0,0,0,0.95)]">
             Eliminating off-plan uncertainty with verified construction milestones. Explore prime residential penthouses, food court bays, and corporate suites across Bahria Town Lahore and Islamabad.
           </p>
 

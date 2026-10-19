@@ -238,23 +238,22 @@ export const ScrollImageSequenceBackground: React.FC<ScrollImageSequenceBackgrou
         }}
       />
 
-      {/* Multi-Layer Luxury Dark Obsidian & Vignette Overlay */}
-      {/* Guarantees 100% Text, Badge, and Glassmorphic Card Contrast & Readability while revealing the 3D building */}
+      {/* Bright, Crisp Multi-Layer Overlay — Keeps Image Sequence Fully Visible & Vibrant */}
       <div
         className="absolute inset-0 pointer-events-none transition-opacity duration-700"
         style={{
           background: `
-            radial-gradient(ellipse 95% 85% at 50% 45%, rgba(10, 16, 29, 0.42) 0%, rgba(10, 16, 29, 0.68) 65%, rgba(10, 16, 29, 0.88) 100%),
-            linear-gradient(to bottom, rgba(10, 16, 29, 0.65) 0%, rgba(16, 27, 46, 0.32) 30%, rgba(10, 16, 29, 0.62) 70%, rgba(10, 16, 29, 0.88) 100%)
+            radial-gradient(ellipse 95% 85% at 50% 45%, rgba(10, 16, 29, 0.05) 0%, rgba(10, 16, 29, 0.18) 65%, rgba(10, 16, 29, 0.40) 100%),
+            linear-gradient(to bottom, rgba(10, 16, 29, 0.22) 0%, rgba(16, 27, 46, 0.04) 25%, rgba(10, 16, 29, 0.12) 70%, rgba(10, 16, 29, 0.35) 100%)
           `,
         }}
       />
 
       {/* Subtle Warm Champagne Glow along upper viewport for luxury editorial depth */}
       <div
-        className="absolute top-0 left-1/2 -translate-x-1/2 w-[1200px] h-[340px] pointer-events-none opacity-20"
+        className="absolute top-0 left-1/2 -translate-x-1/2 w-[1200px] h-[340px] pointer-events-none opacity-15"
         style={{
-          background: 'radial-gradient(circle, rgba(217, 184, 120, 0.18) 0%, rgba(10, 16, 29, 0) 70%)',
+          background: 'radial-gradient(circle, rgba(217, 184, 120, 0.15) 0%, rgba(10, 16, 29, 0) 70%)',
         }}
       />
 
