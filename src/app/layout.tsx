@@ -5,7 +5,7 @@ import { Footer } from '@/components/organisms/Footer';
 import { COMPANY_INFO } from '@/data/constants';
 import { generateOrganizationSchema } from '@/lib/seo';
 import { WhatsAppCTA } from '@/components/atoms/WhatsAppCTA';
-import { Animated3DBackground } from '@/components/atoms/Animated3DBackground';
+import { ScrollImageSequenceBackground } from '@/components/atoms/ScrollImageSequenceBackground';
 import { SmoothScrollProvider } from '@/components/atoms/SmoothScrollProvider';
 import { ScrollProgressHUD } from '@/components/atoms/ScrollProgressHUD';
 
@@ -112,14 +112,14 @@ export default function RootLayout({
       </head>
       <body className="min-h-full flex flex-col bg-[#0A101D] text-[#101B2E] dark:text-[#F5F2EB] selection:bg-[#C4A46A] selection:text-[#101B2E] transition-colors duration-300 relative">
         <SmoothScrollProvider>
-          {/* Global 3D Interactive Canvas Background (Scroll & Mouse Parallax) */}
-          <Animated3DBackground fixed intensity={1.1} />
+          {/* Global Scroll-Driven 3D Building Sequence Background with Dark Vignette Overlay */}
+          <ScrollImageSequenceBackground />
           
           {/* Floating Vertical Section Progress HUD (era-residence.com inspiration) */}
           <ScrollProgressHUD />
 
           <NavigationHeader />
-          <main className="flex-1">{children}</main>
+          <main className="flex-1 relative z-10">{children}</main>
           <Footer />
 
           {/* Persistent Floating WhatsApp Speed Dial */}
