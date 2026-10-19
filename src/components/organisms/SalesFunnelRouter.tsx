@@ -237,6 +237,7 @@ export const SalesFunnelRouter: React.FC = () => {
   const [activeSectorId, setActiveSectorId] = useState<SectorFunnel['id']>('residential');
   const [leadName, setLeadName] = useState('');
   const [leadPhone, setLeadPhone] = useState('');
+  const [budget, setBudget] = useState<number>(25000000);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitted, setSubmitted] = useState(false);
 
@@ -435,6 +436,69 @@ export const SalesFunnelRouter: React.FC = () => {
                   <div className="text-[10px] text-[#C4A46A]">{m.detail}</div>
                 </div>
               ))}
+            </div>
+
+            {/* Dynamic Capital & Yield Cashflow Simulator */}
+            <div className="p-4 sm:p-5 rounded-2xl bg-[#080D18]/90 border border-[#C4A46A]/30 space-y-4">
+              <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
+                <div>
+                  <span className="text-[10px] font-extrabold uppercase tracking-widest text-[#C4A46A] flex items-center gap-1.5">
+                    <TrendingUp className="w-3.5 h-3.5" />
+                    <span>Dynamic Capital & Cashflow Simulator</span>
+                  </span>
+                  <div className="text-xs text-gray-300">Simulate returns for {activeFunnel.label}</div>
+                </div>
+
+                <div className="text-left sm:text-right">
+                  <div className="text-[10px] text-gray-400">Target Capital Allocation</div>
+                  <div className="text-base sm:text-lg font-serif font-black text-[#C4A46A]">{formatPKR(budget)}</div>
+                </div>
+              </div>
+
+              {/* Range Slider */}
+              <div>
+                <input
+                  type="range"
+                  min={10000000}
+                  max={65000000}
+                  step={2500000}
+                  value={budget}
+                  onChange={(e) => setBudget(Number(e.target.value))}
+                  className="w-full accent-[#C4A46A] cursor-pointer"
+                />
+                <div className="flex justify-between text-[10px] text-gray-500 font-mono mt-1">
+                  <span>PKR 1.00 Cr</span>
+                  <span>PKR 3.50 Cr</span>
+                  <span>PKR 6.50 Cr</span>
+                </div>
+              </div>
+
+              {/* Dynamic Simulated Output */}
+              <div className="grid grid-cols-3 gap-2.5 pt-1 text-center">
+                <div className="p-2.5 rounded-xl bg-[#0D1525] border border-white/5">
+                  <div className="text-[10px] text-gray-400">Annual Rental</div>
+                  <div className="text-xs sm:text-sm font-bold text-emerald-400 mt-0.5">
+                    +{formatPKR(Math.round(budget * (activeFunnel.id === 'commercial' ? 0.12 : 0.09)))}
+                  </div>
+                  <div className="text-[9px] text-gray-500">Per annum</div>
+                </div>
+
+                <div className="p-2.5 rounded-xl bg-[#0D1525] border border-white/5">
+                  <div className="text-[10px] text-gray-400">3-Yr Capital Gain</div>
+                  <div className="text-xs sm:text-sm font-bold text-[#F5E6CA] mt-0.5">
+                    +{formatPKR(Math.round(budget * 0.65))}
+                  </div>
+                  <div className="text-[9px] text-[#C4A46A]">Projected growth</div>
+                </div>
+
+                <div className="p-2.5 rounded-xl bg-[#0D1525] border border-white/5">
+                  <div className="text-[10px] text-gray-400">Booking (25%)</div>
+                  <div className="text-xs sm:text-sm font-bold text-white mt-0.5">
+                    {formatPKR(Math.round(budget * 0.25))}
+                  </div>
+                  <div className="text-[9px] text-gray-500">Immediate token</div>
+                </div>
+              </div>
             </div>
 
             {/* Recommended Flagship Unit Banner */}

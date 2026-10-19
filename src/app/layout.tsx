@@ -6,6 +6,8 @@ import { COMPANY_INFO } from '@/data/constants';
 import { generateOrganizationSchema } from '@/lib/seo';
 import { WhatsAppCTA } from '@/components/atoms/WhatsAppCTA';
 import { Animated3DBackground } from '@/components/atoms/Animated3DBackground';
+import { SmoothScrollProvider } from '@/components/atoms/SmoothScrollProvider';
+import { ScrollProgressHUD } from '@/components/atoms/ScrollProgressHUD';
 
 export const metadata: Metadata = {
   metadataBase: new URL(COMPANY_INFO.websiteUrl),
@@ -109,21 +111,27 @@ export default function RootLayout({
         />
       </head>
       <body className="min-h-full flex flex-col bg-[#0A101D] text-[#101B2E] dark:text-[#F5F2EB] selection:bg-[#C4A46A] selection:text-[#101B2E] transition-colors duration-300 relative">
-        {/* Global 3D Interactive Canvas Background (Scroll & Mouse Parallax) */}
-        <Animated3DBackground fixed intensity={1.1} />
-        <NavigationHeader />
-        <main className="flex-1">{children}</main>
-        <Footer />
+        <SmoothScrollProvider>
+          {/* Global 3D Interactive Canvas Background (Scroll & Mouse Parallax) */}
+          <Animated3DBackground fixed intensity={1.1} />
+          
+          {/* Floating Vertical Section Progress HUD (era-residence.com inspiration) */}
+          <ScrollProgressHUD />
 
-        {/* Persistent Floating WhatsApp Speed Dial */}
-        <div className="fixed bottom-6 right-6 z-50">
-          <WhatsAppCTA
-            message="Hello Boulevard 01, I am browsing your property platform and would like live assistance from a sales director."
-            label="Live Desk"
-            variant="floating"
-            className="glow-gold"
-          />
-        </div>
+          <NavigationHeader />
+          <main className="flex-1">{children}</main>
+          <Footer />
+
+          {/* Persistent Floating WhatsApp Speed Dial */}
+          <div className="fixed bottom-6 right-6 z-50">
+            <WhatsAppCTA
+              message="Hello Boulevard 01, I am browsing your property platform and would like live assistance from a sales director."
+              label="Live Desk"
+              variant="floating"
+              className="glow-gold"
+            />
+          </div>
+        </SmoothScrollProvider>
       </body>
     </html>
   );

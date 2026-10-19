@@ -25,6 +25,7 @@ import { COMPANY_INFO, formatPKR } from '@/data/constants';
 import { WhatsAppCTA } from '@/components/atoms/WhatsAppCTA';
 import { Logo } from '@/components/atoms/Logo';
 import { SalesFunnelRouter } from '@/components/organisms/SalesFunnelRouter';
+import { ArchitecturalExplorer } from '@/components/organisms/ArchitecturalExplorer';
 
 const TESTIMONIALS_DATA = [
   {
@@ -145,7 +146,7 @@ export default function HomePage() {
       {/* =========================================================================
           1. HERO SECTION WITH GLOBAL 3D CANVAS LIVING BEHIND
           ========================================================================= */}
-      <section className="relative min-h-[640px] lg:min-h-[720px] flex items-center justify-center overflow-hidden py-16 sm:py-20 px-4 sm:px-6 lg:px-8 z-10">
+      <section id="hero-section" className="relative min-h-[640px] lg:min-h-[720px] flex items-center justify-center overflow-hidden py-16 sm:py-20 px-4 sm:px-6 lg:px-8 z-10">
         {/* Subtle Vignettes & Architectural Texture */}
         <div className="absolute inset-0 bg-radial from-transparent via-[#0A101D]/40 to-[#0A101D]/80 pointer-events-none -z-1" />
 
@@ -238,9 +239,14 @@ export default function HomePage() {
       <SalesFunnelRouter />
 
       {/* =========================================================================
-          3. SECTION: CURATED HIGH-RISE DEVELOPMENTS
+          3. SECTION: ARCHITECTURAL ELEVATION & ATMOSPHERE EXPLORER
           ========================================================================= */}
-      <section className="py-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto w-full relative z-10">
+      <ArchitecturalExplorer />
+
+      {/* =========================================================================
+          4. SECTION: CURATED HIGH-RISE DEVELOPMENTS
+          ========================================================================= */}
+      <section id="developments-section" className="py-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto w-full relative z-10">
         {/* Section Header */}
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12">
           <div>
@@ -403,7 +409,7 @@ export default function HomePage() {
       {/* =========================================================================
           5. DUAL COLUMN SECTION (ROSHAN DIGITAL + TESTIMONIALS + CONTACT FORM)
           ========================================================================= */}
-      <section className="py-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto w-full relative z-10">
+      <section id="contact-section" className="py-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto w-full relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-start">
           {/* ----------------- LEFT COLUMN: ROSHAN DIGITAL & TESTIMONIALS ----------------- */}
           <div className="lg:col-span-6 space-y-8">
